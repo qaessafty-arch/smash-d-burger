@@ -315,6 +315,16 @@ const copy = {
     contactHead: 'COME',
     contactHeadSpan: 'HUNGRY.',
     getDirections: 'Get directions',
+    aboutTitle: 'OUR STORY',
+    aboutHead: 'THE SMASH',
+    aboutHeadSpan: 'MATTERS.',
+    aboutP1: 'Smashed Burger started with one obsession: the perfect smash. We hand-press 100% fresh local beef, smash it hard on cast iron, and let the Maillard reaction do the magic.',
+    aboutP2: "No fillers. No shortcuts. Just Erbil's crispiest, juiciest burger — served fast, served hot, served with pride.",
+    aboutQuote: "“Good burgers don't need explaining.”",
+    aboutAuthor: "— The Smashed Burger crew",
+    aboutAlt: "Smashed burger on the grill",
+    estYear: "EST. 2024",
+    erbil: "ERBIL",
   },
   KU: {
     order: 'داواکاری بکە',
@@ -357,6 +367,16 @@ const copy = {
     contactHead: 'بە برسێتی',
     contactHeadSpan: 'وەرن.',
     getDirections: 'نیشاندانی ڕێگا',
+    aboutTitle: 'چیرۆکی ئێمە',
+    aboutHead: 'سمەشکردن',
+    aboutHeadSpan: 'گرنگە.',
+    aboutP1: 'سمەش بەرگەر بە یەک ئامانج دەستیپێکرد: باشترین سمەش. ئێمە ١٠٠٪ گۆشتی فرێشی خۆماڵی بەکاردەهێنین، لەسەر ئاسنی داغ دەیپەستێوین، و ڕێگە دەدەین کارلێکی مایارد جادوەکەی خۆی بکات.',
+    aboutP2: 'بێ فێڵ. بێ کورتکردنەوە. تەنها کڕیسپیترین و بەتامترین بەرگەری هەولێر — بە خێرایی و گەرمی پێشکەشتان دەکرێت.',
+    aboutQuote: '“بەرگەری باش پێویستی بە ڕوونکردنەوە نییە.”',
+    aboutAuthor: '— ستافی سمەش بەرگەر',
+    aboutAlt: 'سمەش بەرگەر لەسەر گریڵ',
+    estYear: 'دامەزراوی ٢٠٢٤',
+    erbil: 'هەولێر',
   },
   AR: {
     order: 'اطلب الآن',
@@ -399,6 +419,16 @@ const copy = {
     contactHead: 'تعال وأنت',
     contactHeadSpan: 'جائع.',
     getDirections: 'الاتجاهات على الخريطة',
+    aboutTitle: 'قصتنا',
+    aboutHead: 'السماش',
+    aboutHeadSpan: 'يصنع الفرق.',
+    aboutP1: 'بدأت سماش برجر بشغف واحد: السماش المثالي. نستخدم لحم بقري محلي طازج 100%، نكبسه بقوة على مقلاة الحديد الزهر، وندع تفاعل مايارد يصنع السحر.',
+    aboutP2: 'بدون إضافات. بدون اختصارات. فقط ألذ وأكثر برجر مقرمش وعصاري في أربيل — يُقدم سريعاً، وساخناً، وبكل فخر.',
+    aboutQuote: '“البرجر الجيد لا يحتاج إلى شرح.”',
+    aboutAuthor: '— فريق سماش برجر',
+    aboutAlt: 'سماش برجر على الشواية',
+    estYear: 'تأسس ٢٠٢٤',
+    erbil: 'أربيل',
   },
 }
 
@@ -1354,32 +1384,29 @@ export default function Page() {
         <section id="about" className="about-section">
           <div className="container about-grid">
             <div className="about-photo">
-              <img src="/smashed-burger-hero.png" alt="Smashed burger on the grill" />
+              <img src="/smashed-burger-hero.png" alt={t.aboutAlt} />
               <div className="photo-label">
-                EST. 2024
+                {t.estYear}
                 <br />
-                <b>ERBIL</b>
+                <b>{t.erbil}</b>
               </div>
             </div>
             <div className="about-copy">
-              <p className="eyebrow dark">OUR STORY</p>
+              <p className="eyebrow dark">{t.aboutTitle}</p>
               <h2>
-                THE SMASH
+                {t.aboutHead}
                 <br />
-                <span>MATTERS.</span>
+                <span>{t.aboutHeadSpan}</span>
               </h2>
               <p>
-                Smashed Burger started with one obsession: the perfect smash. We hand-press 100%
-                fresh local beef, smash it hard on cast iron, and let the Maillard reaction do the
-                magic.
+                {t.aboutP1}
               </p>
               <p>
-                No fillers. No shortcuts. Just Erbil&apos;s crispiest, juiciest burger — served
-                fast, served hot, served with pride.
+                {t.aboutP2}
               </p>
               <blockquote>
-                “Good burgers don&apos;t need explaining.”
-                <cite>— The Smashed Burger crew</cite>
+                {t.aboutQuote}
+                <cite>{t.aboutAuthor}</cite>
               </blockquote>
             </div>
           </div>
