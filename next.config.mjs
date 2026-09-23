@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/smash-d-burger',
   typescript: {
     ignoreBuildErrors: true,
   },
