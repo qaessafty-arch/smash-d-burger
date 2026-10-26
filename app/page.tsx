@@ -56,10 +56,7 @@ const LocationMap = dynamic(
 
 const defaultWa =
   'https://wa.me/9647500000000?text=Hi%20Smashed%20Burger%2C%20I%27d%20like%20to%20order.'
-const heroBackgrounds = [
-  'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smashed%20burger%20infront-Lq3QmBR7UEDrDRqgNW2WneUum382sA.jpg',
-  'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smashed%20burger1-uwhgxZoQxNwLcddFXz9vn4cUx8qBH7.jpg',
-]
+const heroBackgrounds = ['/menu-photo.jpg']
 
 const copy = {
   EN: {
