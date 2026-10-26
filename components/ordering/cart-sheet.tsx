@@ -30,6 +30,7 @@ export function CartSheet() {
         </header>
         <div className="ox-cart-body">
           <TableBanner compact />
+          {settings?.notice && <p className="ox-warn"><AlertTriangle size={15} /> {settings.notice}</p>}
           {disabled && <p className="ox-warn"><AlertTriangle size={15} /> {tr(lang, 'orderingOff')}</p>}
           {cart.length === 0 ? (
             <p className="ox-empty">{tr(lang, 'cartEmpty')}</p>

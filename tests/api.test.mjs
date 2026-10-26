@@ -460,3 +460,23 @@ test('realtime: staff event stream requires login and announces events', async (
   assert.equal(res.headers.get('content-type').startsWith('text/event-stream'), true)
   await res.body.cancel()
 })
+
+test('quick switches: managers can pause ordering and delivery; waiters cannot; guests see it', async () => {
+  assert.equal((await S.waiter.api('GET', '/api/admin/switches')).status, 403)
+  assert.equal((await S.waiter.api('PUT', '/api/admin/switches', { orderingEnabled: false })).status, 403)
+  assert.equal((await client().api('PUT', '/api/admin/switches', { orderingEnabled: false })).status, 401)
+  assert.equal((await S.manager.api('PUT', '/api/admin/switches', { taxPercent: 50 })).status, 400) // only switches, nothing else
+  assert.equal((await S.manager.api('PUT', '/api/admin/switches', { requestTypes: ['hack'] })).status, 400)
+  const r = await S.manager.api('PUT', '/api/admin/switches', { orderingEnabled: false, deliveryEnabled: false, notice: 'Kitchen closed 3 to 5 pm' })
+  assert.equal(r.status, 200)
+  const pub = (await client().api('GET', '/api/menu')).data.settings
+  assert.equal(pub.orderingEnabled, false); assert.equal(pub.deliveryEnabled, false); assert.equal(pub.notice, 'Kitchen closed 3 to 5 pm')
+  const og = menuItem(S.menu, 'Pepsi')
+  const fresh = client(); await scan(fresh, S.tables[3].qrUrl) // fresh guest session (the earlier one hit the order rate limit)
+  const blocked = await fresh.api('POST', '/api/orders', { lines: [{ itemId: og.id, quantity: 1 }], idempotencyKey: idem() })
+  assert.equal(blocked.status, 403); assert.equal(blocked.data.code, 'ordering_disabled')
+  assert.equal((await S.manager.api('PUT', '/api/admin/switches', { notice: 'x'.repeat(300) })).status, 400)
+  await S.manager.api('PUT', '/api/admin/switches', { orderingEnabled: true, deliveryEnabled: true, notice: '' })
+  const ok = await fresh.api('POST', '/api/orders', { lines: [{ itemId: og.id, quantity: 1 }], idempotencyKey: idem() })
+  assert.equal(ok.status, 201)
+})

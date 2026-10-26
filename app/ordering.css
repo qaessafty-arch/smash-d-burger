@@ -245,3 +245,5 @@
   .ox-item-bar { padding-inline:16px; }
   .ox-primary { padding:0 14px; font-size:12px; }
 }
+
+.ox-notice { margin:0 0 14px; padding:12px 14px; border-radius:8px; background:#fff4d9; border:1px solid #ecd49a; color:#5c4306; font-size:14px; font-weight:600; }

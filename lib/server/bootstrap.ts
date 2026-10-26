@@ -20,6 +20,7 @@ export interface Settings {
   manualTableMode: 'open' | 'waiter_only' | 'off'
   verifyTtlMinutes: number; tableSessionHours: number; requestTypes: string[]; soundAlerts: boolean
   languages: string[]; whatsapp: string
+  deliveryEnabled: boolean; notice: string
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -53,6 +54,8 @@ export const DEFAULT_SETTINGS: Settings = {
   soundAlerts: true,
   languages: ['EN', 'KU', 'AR'],
   whatsapp: '9647500000000',
+  deliveryEnabled: true,
+  notice: '',
 }
 
 type SeedItem = { name: string; desc: string; price: number; image: string; badge: string; spicy: boolean }

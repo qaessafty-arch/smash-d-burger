@@ -140,3 +140,9 @@ CI (`.github/workflows/ci.yml`) typechecks, builds and runs them.
 - No payment processing (bill requests only). Items cannot be re-ordered within a category (categories can).
 - Kurdish strings were written without a native review. Remote menu photos (Unsplash) are hot-linked, as before; uploading your own is recommended.
 - Camera QR scanning needs HTTPS and a browser with camera access; typing the code always works.
+
+## 9. Quick switches (pause anything temporarily)
+
+Admin and managers see **Quick switches** at the top of the dashboard: table ordering, delivery button, guests picking their own table,
+each guest request (call waiter, bill, water, utensils, napkins), and an optional message shown to guests. Changes reach guests within a minute.
+Hide a category or mark a dish sold out in **Menu**. Setting up tables: **Tables & QR** (add tables, print the QR codes, stick one on each table).

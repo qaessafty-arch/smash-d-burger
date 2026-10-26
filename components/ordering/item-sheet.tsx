@@ -5,6 +5,7 @@ import { Check, Clock, Flame, Minus, Plus, X } from 'lucide-react'
 import { useOrdering } from './provider'
 import { money, pick, tr } from './i18n'
 import { FoodImage, Sheet } from './parts'
+import { STATIC_SITE } from '@/lib/utils'
 import type { Group, MenuItem } from './types'
 
 function defaults(item: MenuItem): Record<number, number[]> {
@@ -116,7 +117,7 @@ export function ItemSheet() {
             <button type="button" onClick={() => setQty((q) => Math.min(50, q + 1))} aria-label="+"><Plus size={16} /></button>
           </div>
           <button type="button" className="ox-primary" disabled={!item.available || missing.length > 0 || !settings?.orderingEnabled} onClick={submit}>
-            {!item.available ? tr(lang, 'unavailable') : !settings?.orderingEnabled ? tr(lang, 'needTable') : editing ? tr(lang, 'update') : tr(lang, 'addToOrder')}
+            {!item.available ? tr(lang, 'unavailable') : !settings?.orderingEnabled ? tr(lang, STATIC_SITE ? 'needTable' : 'orderingPaused') : editing ? tr(lang, 'update') : tr(lang, 'addToOrder')}
             <span>{money(unit * qty, lang)}</span>
           </button>
         </div>

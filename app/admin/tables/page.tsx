@@ -44,6 +44,11 @@ export default function TablesAdmin() {
     <>
       <div className="ad-head"><h1>Tables & QR codes</h1><button className="st-btn" onClick={printAll} disabled={!tables.length}><Printer size={15} /> Print all QR codes</button></div>
       {err && <p className="st-error" role="alert">{err}</p>}
+      <ol className="ad-howto">
+        <li><b>Add your tables</b> below. Each one gets its own private QR code automatically.</li>
+        <li><b>Print the QR codes</b> (all at once, or download one table's PNG) and put each one on its table.</li>
+        <li><b>That's the connection.</b> When a guest scans a table's QR code, their order is linked to that table. Nothing else to set up.</li>
+      </ol>
       <div className="ad-two">
         <form className="ad-panel ad-inline" onSubmit={(e) => { e.preventDefault(); void run(() => api('POST', '/api/admin/tables', bulk)) }}>
           <h2>Add several tables</h2>

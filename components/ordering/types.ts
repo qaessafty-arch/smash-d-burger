@@ -12,7 +12,7 @@ export type PublicSettings = {
   restaurantName: string; tagline: string; description: string; logoUrl: string; coverUrl: string; currency: string
   taxPercent: number; servicePercent: number; hours: Array<{ day: string; open: string; close: string; closed: boolean }>
   timezone: string; orderingEnabled: boolean; manualTableMode: 'open' | 'waiter_only' | 'off'; requestTypes: string[]
-  languages: string[]; whatsapp: string; isOpen: boolean
+  languages: string[]; whatsapp: string; isOpen: boolean; deliveryEnabled: boolean; notice: string
 }
 export type TableInfo = { number: string; location: string; trusted: boolean; source: string }
 export type CartLine = {
