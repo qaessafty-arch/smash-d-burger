@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Local, always-available photo used when a remote menu image fails to load.
-export const BASE_PATH = '/smash-d-burger'
+export const BASE_PATH = ''
 export const FALLBACK_FOOD_IMAGE = `${BASE_PATH}/smashed-burger-menu.png`
 
 export function onFoodImageError(e: { currentTarget: HTMLImageElement }) {
