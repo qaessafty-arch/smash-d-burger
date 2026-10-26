@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import './ordering.css'
+import './staff.css'
 
 export const metadata: Metadata = {
   title: "Smashed Burger Erbil | Best Smash Burgers in Erbil, Iraq",

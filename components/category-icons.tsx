@@ -31,3 +31,11 @@ export const CATEGORY_ICONS = {
   Fries: FriesIcon,
   Drinks: CupSoda,
 } as const
+
+import { Utensils, Hamburger as HamburgerIcon } from 'lucide-react'
+const BY_KEY = { burger: HamburgerIcon, drumstick: Drumstick, shrimp: Shrimp, fries: FriesIcon, drink: CupSoda } as const
+
+/** Icon for a category (admin-chosen key; falls back to a generic utensils icon). */
+export function categoryIcon(key: string) {
+  return ((BY_KEY as unknown as Record<string, (p: LucideProps) => React.JSX.Element>)[key] ?? Utensils) as (p: LucideProps) => React.JSX.Element
+}

@@ -2,7 +2,7 @@
 const nextConfig = {
   // Server mode (no static export): the ordering system needs API routes and a database.
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   images: {
     unoptimized: true,

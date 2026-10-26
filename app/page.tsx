@@ -2,24 +2,13 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import {
-  BurgerCustomizerModal,
-  BurgerItem,
-  CustomizedBurgerOrder,
-} from '@/components/burger-customizer-modal'
-import { CartDrawer } from '@/components/cart-drawer'
 import { ReviewModal, ReviewItem } from '@/components/review-modal'
-import { MenuManagerModal } from '@/components/menu-manager-modal'
-import { StockIndicator } from '@/components/stock-indicator'
-import { CATEGORY_ICONS } from '@/components/category-icons'
-import { BASE_PATH, onFoodImageError } from '@/lib/utils'
-import {
-  INITIAL_SIMULATED_INVENTORY,
-  getInventoryStock,
-  deductStock,
-  restoreStock,
-  SimulatedInventory,
-} from '@/lib/inventory'
+import { OrderingProvider, useOrdering } from '@/components/ordering/provider'
+import { FeaturedSection, FullMenu, CartBar } from '@/components/ordering/menu-section'
+import { ItemSheet } from '@/components/ordering/item-sheet'
+import { CartSheet } from '@/components/ordering/cart-sheet'
+import { ServiceFab } from '@/components/ordering/service-fab'
+import { BASE_PATH } from '@/lib/utils'
 import {
   ArrowUpRight,
   Check,
@@ -71,210 +60,6 @@ const heroBackgrounds = [
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smashed%20burger%20infront-Lq3QmBR7UEDrDRqgNW2WneUum382sA.jpg',
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smashed%20burger1-uwhgxZoQxNwLcddFXz9vn4cUx8qBH7.jpg',
 ]
-
-const featured: BurgerItem[] = [
-  {
-    name: 'OG Smash',
-    desc: 'Single smashed beef patty with American cheese, house sauce, pickles, and caramelized onions.',
-    price: '8,500',
-    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80',
-    badge: 'Bestseller',
-    category: 'Meat Burgers',
-  },
-  {
-    name: 'All American',
-    desc: 'Single smashed beef patty, American cheese, ketchup, mustard, raw onions, pickles, and house sauce.',
-    price: '8,500',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&auto=format&fit=crop&q=80',
-    badge: 'Classic',
-    category: 'Meat Burgers',
-  },
-  {
-    name: 'Golden Crunch',
-    desc: 'Crispy chicken, American cheese, lettuce, tomato, and house sauce.',
-    price: '7,500',
-    image: 'https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=800&auto=format&fit=crop&q=80',
-    badge: 'Crispy Favorite',
-    category: 'Chicken Burgers',
-  },
-  {
-    name: 'Dynamite Shrimps (7 pcs)',
-    desc: 'Seven crispy shrimps tossed in a creamy spicy dynamite sauce.',
-    price: '9,500',
-    image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
-    badge: 'Hot',
-    spicy: true,
-    category: 'Sides',
-  },
-]
-
-export type MenuCategory = 'Meat Burgers' | 'Chicken Burgers' | 'Sides' | 'Fries' | 'Drinks'
-
-const fullMenuData: Record<
-  MenuCategory,
-  Array<BurgerItem>
-> = {
-  'Meat Burgers': [
-    {
-      name: 'All American',
-      desc: 'Single smashed beef patty, American cheese, ketchup, mustard, raw onions, pickles, and house sauce.',
-      price: '8,500',
-      badge: 'POPULAR',
-      image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&auto=format&fit=crop&q=80',
-      category: 'Meat Burgers',
-    },
-    {
-      name: 'OG Smash',
-      desc: 'Single smashed beef patty with American cheese, house sauce, pickles, and caramelized onions.',
-      price: '8,500',
-      badge: 'SIGNATURE',
-      image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80',
-      category: 'Meat Burgers',
-    },
-    {
-      name: 'Jalapeño',
-      desc: 'Single smashed beef, American cheese, house sauce, caramelized onions, and fresh jalapeños.',
-      price: '8,500',
-      badge: 'SPICY',
-      spicy: true,
-      image: 'https://images.unsplash.com/photo-1582196016295-f8c8bd4b3e99?w=800&auto=format&fit=crop&q=80',
-      category: 'Meat Burgers',
-    },
-  ],
-  'Chicken Burgers': [
-    {
-      name: 'Golden Crunch',
-      desc: 'Crispy golden fried chicken, American cheese, crisp lettuce, fresh tomato, and house sauce.',
-      price: '7,500',
-      badge: 'CRUNCHY',
-      image: 'https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=800&auto=format&fit=crop&q=80',
-      category: 'Chicken Burgers',
-    },
-    {
-      name: 'Hot Chicken',
-      desc: 'Crispy fried chicken, American cheese, lettuce, tomato, and fiery house spicy sauce.',
-      price: '7,500',
-      badge: 'HOT & SPICY',
-      spicy: true,
-      image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&auto=format&fit=crop&q=80',
-      category: 'Chicken Burgers',
-    },
-    {
-      name: 'Sweet Heat',
-      desc: 'Crispy chicken, American cheese, lettuce, tomato, and sweet spicy chili glaze sauce.',
-      price: '7,500',
-      badge: 'SWEET & HOT',
-      spicy: true,
-      image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&auto=format&fit=crop&q=80',
-      category: 'Chicken Burgers',
-    },
-  ],
-  Sides: [
-    {
-      name: 'Crispy Chicken Tenders (5 pcs)',
-      desc: 'Five golden crispy chicken tenders, crunchy outside and juicy tender inside with house dip.',
-      price: '8,000',
-      badge: '5 PCS',
-      image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80',
-      category: 'Sides',
-    },
-    {
-      name: 'Dynamite Shrimps (7 pcs)',
-      desc: 'Seven crispy shrimps tossed in a creamy fiery spicy dynamite glaze sauce.',
-      price: '9,500',
-      badge: '7 PCS',
-      spicy: true,
-      image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
-      category: 'Sides',
-    },
-    {
-      name: 'Jalapeño Poppers (7 pcs)',
-      desc: 'Seven crispy jalapeños filled with melted molten cheese, crisp & packed with flavor.',
-      price: '5,500',
-      badge: '7 PCS',
-      spicy: true,
-      image: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=800&auto=format&fit=crop&q=80',
-      category: 'Sides',
-    },
-    {
-      name: 'Chicken Popcorn',
-      desc: 'Bite-sized seasoned crispy chicken bites, delicious & perfect for sharing.',
-      price: '5,500',
-      badge: 'SNACK',
-      image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=800&auto=format&fit=crop&q=80',
-      category: 'Sides',
-    },
-    {
-      name: 'Loaded Fries',
-      desc: 'Crispy golden fries topped with melted cheddar sauce, caramelized onions, jalapeños, and house sauce.',
-      price: '7,500',
-      badge: 'LOADED',
-      spicy: true,
-      image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?w=800&auto=format&fit=crop&q=80',
-      category: 'Sides',
-    },
-  ],
-  Fries: [
-    {
-      name: 'Classic Fries',
-      desc: 'Crispy golden French fries seasoned with sea salt and fried to order.',
-      price: '3,000',
-      badge: 'CRISPY',
-      image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&auto=format&fit=crop&q=80',
-      category: 'Fries',
-    },
-    {
-      name: 'Curly Fries',
-      desc: 'Spiraled golden crispy seasoned curly fries with signature spices.',
-      price: '3,500',
-      badge: 'POPULAR',
-      image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=800&auto=format&fit=crop&q=80',
-      category: 'Fries',
-    },
-    {
-      name: 'Seasoned Fries',
-      desc: 'Crispy golden fries tossed in our fragrant cajun and herb spice blend.',
-      price: '3,500',
-      badge: 'CAJUN SPICE',
-      image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=800&auto=format&fit=crop&q=80',
-      category: 'Fries',
-    },
-  ],
-  Drinks: [
-    {
-      name: 'Pepsi',
-      desc: 'Ice-cold 330ml chilled Pepsi can.',
-      price: '1,500',
-      badge: 'CHILLED',
-      image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=800&auto=format&fit=crop&q=80',
-      category: 'Drinks',
-    },
-    {
-      name: '7UP',
-      desc: 'Crisp, refreshing 330ml lemon-lime soda can.',
-      price: '1,500',
-      badge: 'REFRESHING',
-      image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=800&auto=format&fit=crop&q=80',
-      category: 'Drinks',
-    },
-    {
-      name: 'Mirinda',
-      desc: 'Vibrant chilled 330ml citrus orange soda can.',
-      price: '1,500',
-      badge: 'ORANGE',
-      image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=800&auto=format&fit=crop&q=80',
-      category: 'Drinks',
-    },
-    {
-      name: 'Mineral Water',
-      desc: 'Pure mountain natural spring water bottle served chilled or room temp.',
-      price: '1,000',
-      badge: 'PURE',
-      image: 'https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=800&auto=format&fit=crop&q=80',
-      category: 'Drinks',
-    },
-  ],
-}
 
 const copy = {
   EN: {
@@ -470,155 +255,34 @@ const INITIAL_REVIEWS: ReviewItem[] = [
 ]
 
 export default function Page() {
-  const [lang, setLang] = useState<'EN' | 'KU' | 'AR'>('EN')
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [category, setCategory] = useState<MenuCategory>('Meat Burgers')
-  const [heroBackground, setHeroBackground] = useState(0)
+  const [lang, setLangState] = useState<'EN' | 'KU' | 'AR'>('EN')
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('sb_lang')
+      if (saved === 'EN' || saved === 'KU' || saved === 'AR') setLangState(saved)
+    } catch { /* ignore */ }
+  }, [])
+  const setLang = (l: 'EN' | 'KU' | 'AR') => {
+    setLangState(l)
+    try { localStorage.setItem('sb_lang', l) } catch { /* ignore */ }
+  }
+  return (
+    <OrderingProvider lang={lang}>
+      <PageInner lang={lang} setLang={setLang} />
+    </OrderingProvider>
+  )
+}
 
-  // Customization, Cart & Reviews State
-  const [cartItems, setCartItems] = useState<CustomizedBurgerOrder[]>([])
-  const [customizingBurger, setCustomizingBurger] = useState<BurgerItem | null>(null)
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false)
-  const [isCartOpen, setIsCartOpen] = useState(false)
+function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: 'EN' | 'KU' | 'AR') => void }) {
+  const ordering = useOrdering()
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [heroBackground, setHeroBackground] = useState(0)
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false)
   const [reviewsList, setReviewsList] = useState<ReviewItem[]>(INITIAL_REVIEWS)
   const [reviewFilter, setReviewFilter] = useState<'All' | '5' | 'recent'>('All')
   const [toastMessage, setToastMessage] = useState<string | null>(null)
-
-  // Dynamic editable menu items (persisted to localStorage)
-  const [menuData, setMenuData] = useState<Record<MenuCategory, Array<BurgerItem>>>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('smashed_burger_menu_v2')
-        if (saved) {
-          const parsed = JSON.parse(saved)
-          if (parsed && typeof parsed === 'object' && parsed['Meat Burgers']) {
-            return parsed
-          }
-        }
-      } catch (e) {
-        console.error('Failed to load saved menu:', e)
-      }
-    }
-    return fullMenuData
-  })
-  const [isMenuManagerOpen, setIsMenuManagerOpen] = useState(false)
-
-  // Simulated real-time inventory state (persisted locally)
-  const [inventory, setInventory] = useState<SimulatedInventory>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('smashed_burger_inventory_v1')
-        if (saved) {
-          const parsed = JSON.parse(saved)
-          if (parsed && typeof parsed === 'object') {
-            return parsed
-          }
-        }
-      } catch (e) {
-        console.error('Failed to load saved inventory:', e)
-      }
-    }
-    return INITIAL_SIMULATED_INVENTORY
-  })
-
-  const saveInventory = (newInv: SimulatedInventory) => {
-    setInventory(newInv)
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('smashed_burger_inventory_v1', JSON.stringify(newInv))
-      } catch (e) {
-        console.error(e)
-      }
-    }
-  }
-
-  const handleSimulateLiveOrder = () => {
-    const candidateItems = [
-      'Hot Chicken',
-      'Sweet Heat',
-      'Dynamite Shrimps',
-      'Jalapeño',
-      'OG Smash',
-      'Loaded Fries',
-      'Smoked BBQ Bacon',
-    ]
-    const randomItem = candidateItems[Math.floor(Math.random() * candidateItems.length)]
-    const currentStock = getInventoryStock(inventory, randomItem)
-    if (currentStock <= 0) {
-      setToastMessage(
-        lang === 'KU'
-          ? `داواکاری نوێ: ${randomItem} لەمێژە تەواو بووە!`
-          : lang === 'AR'
-          ? `طلب مباشر: ${randomItem} نفد بالكامل بالفعل!`
-          : `Live order: ${randomItem} is already sold out!`
-      )
-      setTimeout(() => setToastMessage(null), 3000)
-      return
-    }
-
-    const nextInv = deductStock(inventory, randomItem, 1)
-    saveInventory(nextInv)
-    const remaining = getInventoryStock(nextInv, randomItem)
-    setToastMessage(
-      lang === 'KU'
-        ? `⚡ داواکاری نوێ لە هەولێر: ١ دانە ${randomItem} داواکرا! ماوە: ${remaining} دانە`
-        : lang === 'AR'
-        ? `⚡ طلب مباشر في أربيل: تم طلب 1x ${randomItem}! المتبقي: ${remaining}`
-        : `⚡ Live Erbil order: 1x ${randomItem} ordered! Kitchen stock: ${remaining} left`
-    )
-    setTimeout(() => setToastMessage(null), 4000)
-  }
-
-  const handleRestockAll = () => {
-    saveInventory(INITIAL_SIMULATED_INVENTORY)
-    setToastMessage(
-      lang === 'KU'
-        ? 'کۆگای چێشتخانە نوێکرایەوە و پڕکرایەوە بۆ دۆخی ئاسایی!'
-        : lang === 'AR'
-        ? 'تمت إعادة تعبئة وتجديد مخزون المطبخ بنجاح!'
-        : 'Kitchen inventory restocked to fresh daily service levels!'
-    )
-    setTimeout(() => setToastMessage(null), 3500)
-  }
-
-  const handleSaveMenu = (newMenu: Record<MenuCategory, Array<BurgerItem>>) => {
-    setMenuData(newMenu)
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('smashed_burger_menu_v2', JSON.stringify(newMenu))
-      } catch (e) {
-        console.error('Failed to persist menu:', e)
-      }
-    }
-    setToastMessage(
-      lang === 'KU'
-        ? 'مینیۆکە بە سەرکەوتوویی نوێکرایەوە!'
-        : lang === 'AR'
-        ? 'تم تحديث قائمة الطعام وحفظ التعديلات بنجاح!'
-        : 'Menu updated and saved successfully!'
-    )
-    setTimeout(() => setToastMessage(null), 3500)
-  }
-
-  const handleResetMenuToDefault = () => {
-    setMenuData(fullMenuData)
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.removeItem('smashed_burger_menu_v2')
-      } catch (e) {
-        console.error(e)
-      }
-    }
-    setToastMessage(
-      lang === 'KU'
-        ? 'مینیۆکە گەڕێندرایەوە بۆ دۆخی بنەڕەتی'
-        : lang === 'AR'
-        ? 'تمت استعادة قائمة الطعام الافتراضية'
-        : 'Menu reset to default Erbil SMASH\'D menu!'
-    )
-    setTimeout(() => setToastMessage(null), 3500)
-  }
+  const totalCartCount = ordering.cartCount
+  const setIsCartOpen = ordering.setCartOpen
 
   const t = copy[lang]
 
@@ -630,8 +294,6 @@ export default function Page() {
   }, [])
 
   const rtl = lang !== 'EN'
-  const totalCartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
-  const grandTotal = cartItems.reduce((sum, item) => sum + item.totalPrice, 0)
 
   // Reviews calculations
   const totalReviewsCount = 500 + (reviewsList.length - INITIAL_REVIEWS.length)
@@ -647,140 +309,7 @@ export default function Page() {
     return reviewsList
   }, [reviewsList, reviewFilter])
 
-  // Dynamic WhatsApp ordering URL
-  const wa = useMemo(() => {
-    if (cartItems.length === 0) return defaultWa
-
-    const lines: string[] = [
-      '🔥 *New Smashed Burger Order* 🔥',
-      '--------------------------------',
-    ]
-
-    cartItems.forEach((item, index) => {
-      lines.push(
-        `${index + 1}. *${item.quantity}x ${item.burgerName}* - ${formatPrice(item.totalPrice)} IQD`
-      )
-      if (item.removedIngredients && item.removedIngredients.length > 0) {
-        lines.push(`   • No: ${item.removedIngredients.join(', ')}`)
-      }
-      if (item.addedExtras && item.addedExtras.length > 0) {
-        lines.push(`   • Extras: ${item.addedExtras.map((e) => e.name).join(', ')}`)
-      }
-      if (item.sauceLevel && item.sauceLevel !== 'Normal' && item.sauceLevel !== 'Standard') {
-        lines.push(`   • Sauce Level: ${item.sauceLevel}`)
-      }
-      if (item.specialInstructions) {
-        lines.push(`   • Kitchen Note: "${item.specialInstructions}"`)
-      }
-    })
-
-    lines.push('--------------------------------')
-    lines.push(`💰 *Total: ${formatPrice(grandTotal)} IQD*`)
-    lines.push('📍 Erbil delivery / pickup')
-
-    return `https://wa.me/9647500000000?text=${encodeURIComponent(lines.join('\n'))}`
-  }, [cartItems, grandTotal])
-
-  const handleOpenBurgerCustomizer = (burger: BurgerItem) => {
-    setCustomizingBurger(burger)
-    setIsCustomizerOpen(true)
-  }
-
-  const handleAddCustomizedOrder = (order: CustomizedBurgerOrder) => {
-    // Deduct stock in simulated inventory
-    const nextInv = deductStock(inventory, order.burgerName, order.quantity)
-    saveInventory(nextInv)
-
-    setCartItems((prev) => {
-      // Find matching item with identical customization configuration
-      const existingIdx = prev.findIndex(
-        (it) =>
-          it.burgerName === order.burgerName &&
-          it.sauceLevel === order.sauceLevel &&
-          it.specialInstructions === order.specialInstructions &&
-          JSON.stringify((it.removedIngredients || []).slice().sort()) ===
-            JSON.stringify((order.removedIngredients || []).slice().sort()) &&
-          JSON.stringify((it.addedExtras || []).map((e) => e.id).sort()) ===
-            JSON.stringify((order.addedExtras || []).map((e) => e.id).sort())
-      )
-
-      if (existingIdx > -1) {
-        const copyList = [...prev]
-        const existing = copyList[existingIdx]
-        const updatedQty = existing.quantity + order.quantity
-        copyList[existingIdx] = {
-          ...existing,
-          quantity: updatedQty,
-          totalPrice: existing.totalUnitPrice * updatedQty,
-        }
-        return copyList
-      }
-
-      return [...prev, order]
-    })
-
-    setToastMessage(`Added ${order.quantity}x ${order.burgerName} to order!`)
-    setTimeout(() => setToastMessage(null), 3500)
-  }
-
-  const handleAddDirectItem = (name: string, priceStr: string, image: string, cat?: MenuCategory) => {
-    // Open customizer so user gets complete control over sizes, dips, flavors, removals
-    handleOpenBurgerCustomizer({
-      name,
-      desc: '',
-      price: priceStr,
-      image,
-      category: cat,
-    })
-  }
-
-  const handleUpdateQuantity = (id: string, newQty: number) => {
-    if (newQty <= 0) {
-      handleRemoveItem(id)
-      return
-    }
-
-    const existing = cartItems.find((it) => it.id === id)
-    if (existing) {
-      const diff = newQty - existing.quantity
-      if (diff > 0) {
-        saveInventory(deductStock(inventory, existing.burgerName, diff))
-      } else if (diff < 0) {
-        saveInventory(restoreStock(inventory, existing.burgerName, Math.abs(diff)))
-      }
-    }
-
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: newQty,
-              totalPrice: item.totalUnitPrice * newQty,
-            }
-          : item
-      )
-    )
-  }
-
-  const handleRemoveItem = (id: string) => {
-    const existing = cartItems.find((it) => it.id === id)
-    if (existing) {
-      saveInventory(restoreStock(inventory, existing.burgerName, existing.quantity))
-    }
-    setCartItems((prev) => prev.filter((item) => item.id !== id))
-  }
-
-  const handleClearCart = () => {
-    let updatedInv = { ...inventory }
-    cartItems.forEach((it) => {
-      updatedInv = restoreStock(updatedInv, it.burgerName, it.quantity)
-    })
-    saveInventory(updatedInv)
-    setCartItems([])
-    setToastMessage('Order tray cleared & reserved stock returned to kitchen')
-    setTimeout(() => setToastMessage(null), 2500)
-  }
+  const wa = defaultWa
 
   const handleNewReviewSubmit = (review: ReviewItem) => {
     setReviewsList((prev) => [review, ...prev])
@@ -789,14 +318,9 @@ export default function Page() {
   }
 
   const handleOrderHeroClick = (e: React.MouseEvent) => {
-    if (cartItems.length > 0) {
-      e.preventDefault()
-      setIsCartOpen(true)
-    } else {
-      // Prompt user with the signature classic smash customizer
-      e.preventDefault()
-      handleOpenBurgerCustomizer(featured[0])
-    }
+    e.preventDefault()
+    if (ordering.cartCount > 0) setIsCartOpen(true)
+    else document.getElementById('full-menu')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -996,9 +520,9 @@ export default function Page() {
           </div>
           <button
             type="button"
-            onClick={() => handleOpenBurgerCustomizer(featured[0])}
+            onClick={handleOrderHeroClick}
             className="hero-sticker cursor-pointer hover:scale-110 active:scale-95 transition-transform"
-            title="Click to customize a burger now!"
+            title="Order now"
           >
             SMASH
             <br />
@@ -1052,89 +576,12 @@ export default function Page() {
         </section>
 
         {/* FEATURED BURGERS */}
-        <section id="menu" className="menu-backdrop">
-          <div className="section container">
-            <div className="section-head">
-              <div>
-                <p className="eyebrow dark">{t.featuredEyebrow}</p>
-                <h2>
-                  {t.featuredHead}
-                  <br />
-                  <span>{t.featuredHeadSpan}</span>
-                </h2>
-              </div>
-              <a href="#full-menu" className="text-link">
-                {t.seeFullMenu} <ArrowUpRight size={17} />
-              </a>
-            </div>
-            <div className="featured-grid">
-              {featured.map((item) => {
-                const stock = item.stock ?? getInventoryStock(inventory, item.name)
-                const isSoldOut = stock <= 0
+        <FeaturedSection
+          eyebrow={t.featuredEyebrow}
+          title={<>{t.featuredHead}<br /><span>{t.featuredHeadSpan}</span></>}
+          link={<a href="#full-menu" className="text-link">{t.seeFullMenu} <ArrowUpRight size={17} /></a>}
+        />
 
-                return (
-                  <article
-                    className="food-card flex flex-col justify-between cursor-pointer group relative"
-                    key={item.name}
-                  >
-                    <div
-                      className="food-img cursor-pointer relative"
-                      onClick={() => handleOpenBurgerCustomizer(item)}
-                      title={`Click to customize ${item.name}`}
-                    >
-                      <img src={item.image} alt={`${item.name} smash burger`} onError={onFoodImageError} />
-                      <div className="absolute top-3 left-3 flex flex-col gap-1 items-start z-10">
-                        {item.badge && (
-                          <span className="font-bold text-[9px] uppercase tracking-[0.5px] px-2 py-1 rounded-[4px] bg-[#D9AA55] text-[#171717]">
-                            {item.badge}
-                          </span>
-                        )}
-                        <StockIndicator count={stock} lang={lang} variant="compact" />
-                      </div>
-                    </div>
-                    <div className="food-info flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-start justify-between gap-2 mb-1">
-                          <h3
-                            onClick={() => handleOpenBurgerCustomizer(item)}
-                            className="hover:text-[#D95B32] transition-colors"
-                          >
-                            {item.name}
-                          </h3>
-                        </div>
-                        <p>{item.desc}</p>
-                      </div>
-                      <div className="price-row flex items-center justify-between gap-2 mt-4">
-                        <strong>
-                          {item.price} <small>IQD</small>
-                        </strong>
-                        {isSoldOut ? (
-                          <span className="px-2.5 py-1 rounded-[4px] bg-[#171717] text-[#aaa] border border-white/20 text-[9px] font-bold uppercase tracking-[0.5px]">
-                            {lang === 'KU' ? 'تەواو بووە' : lang === 'AR' ? 'نفدت الكمية' : 'Sold Out'}
-                          </span>
-                        ) : (
-                          <button
-                            type="button"
-                            className="add-button cursor-pointer"
-                            aria-label={`Add ${item.name}`}
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              handleOpenBurgerCustomizer(item)
-                            }}
-                          >
-                            <Plus size={18} />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* CALLOUT MARQUEE */}
         <section className="marquee-dark">
           <div className="container split-callout">
             <div>
@@ -1150,182 +597,10 @@ export default function Page() {
         </section>
 
         {/* FULL LINEUP MENU */}
-        <section id="full-menu" className="menu-section full-menu">
-          <div className="container section">
-            <div className="section-head">
-              <div>
-                <p className="eyebrow dark">{t.fullMenuTitle}</p>
-                <h2>
-                  {t.fullMenuHead}
-                  <br />
-                  <span>{t.fullMenuHeadSpan}</span>
-                </h2>
-              </div>
-              <div className="cart-note">
-                <span>{totalCartCount > 0 ? '' : 'Order for pickup or delivery'}</span>
-                <button type="button" onClick={() => setIsCartOpen(true)} className="tray-link">
-                  {totalCartCount > 0
-                    ? `${totalCartCount} item${totalCartCount > 1 ? 's' : ''} · ${formatPrice(grandTotal)} IQD · Review & WhatsApp Order`
-                    : 'View Tray'}
-                  <ArrowUpRight size={15} />
-                </button>
-              </div>
-            </div>
-
-            <div className="menu-tools">
-              <button
-                type="button"
-                onClick={() => setIsMenuManagerOpen(true)}
-                className="tool-btn"
-                title="Edit menu items, prices, and descriptions"
-              >
-                <Edit2 size={12} />
-                {lang === 'KU' ? 'گۆڕینی مینیۆ / نرخەکان' : lang === 'AR' ? 'تعديل المنيو والأسعار' : 'Edit Menu'}
-              </button>
-              <span className="tools-spacer" />
-              <button
-                type="button"
-                onClick={handleSimulateLiveOrder}
-                className="tool-btn"
-                title="Simulate an Erbil diner placing a live order to test inventory updates"
-              >
-                <Zap size={12} />
-                {lang === 'KU' ? 'تاقیکردنەوەی داواکاری' : lang === 'AR' ? 'محاكاة طلب' : 'Simulate Order'}
-              </button>
-              <button
-                type="button"
-                onClick={handleRestockAll}
-                className="tool-btn"
-                title="Reset simulated stock to full capacity"
-              >
-                <RotateCcw size={12} />
-                {lang === 'KU' ? 'پڕکردنەوە' : lang === 'AR' ? 'تجديد المخزون' : 'Restock'}
-              </button>
-            </div>
-
-            <div className="menu-tabs" role="tablist">
-              {[
-                { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', },
-                { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', },
-                { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', },
-                { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', },
-                { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', },
-              ].map((cat) => {
-                const isSelected = category === cat.id
-                return (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isSelected}
-                    className={`menu-tab ${isSelected ? 'selected' : ''}`}
-                    onClick={() => setCategory(cat.id)}
-                  >
-                    {(() => { const Icon = CATEGORY_ICONS[cat.id]; return <Icon size={15} /> })()}
-                    <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
-                    <span className="tab-count">{menuData[cat.id]?.length || 0}</span>
-                  </button>
-                )
-              })}
-            </div>
-
-            {/* Extra Patty Banner for Meat Burgers */}
-            {category === 'Meat Burgers' && (
-              <div className="menu-promo">
-                <div className="menu-promo-main">
-                  <span className="menu-promo-icon"><Beef size={20} /></span>
-                  <div>
-                    <h3>
-                      {lang === 'KU'
-                        ? 'گۆشتی سمەشی زیادە'
-                        : lang === 'AR'
-                        ? 'شريحة لحم سماش إضافية'
-                        : 'Extra Smashed Patty'}
-                      <span>+1,500 IQD</span>
-                    </h3>
-                    <p>
-                      {lang === 'KU'
-                        ? 'دەتوانیت شلەی گۆشتی سمەشی زیادە بۆ هەر بەرگەرێک زیاد بکەیت لە کاتی داواکاریدا'
-                        : lang === 'AR'
-                        ? 'يمكنك مضاعفة لحم السماش لأي برجر بكل سهولة عند تخصيص طلبك بالضغط على الزر'
-                        : 'Add an extra juicy smashed beef patty to any burger when clicking Customize!'}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleOpenBurgerCustomizer(menuData['Meat Burgers']?.[0] || fullMenuData['Meat Burgers'][0])}
-                  className="button button-orange"
-                >
-                  <Sliders size={13} />
-                  {lang === 'KU' ? 'ڕێکخستن' : lang === 'AR' ? 'تخصيص' : 'Customize Now'}
-                </button>
-              </div>
-            )}
-
-            <div className="menu-list">
-              {(menuData[category] || []).map((item) => {
-                const stock = item.stock ?? getInventoryStock(inventory, item.name)
-                const isSoldOut = stock <= 0
-
-                const triggerAction = () => {
-                  handleOpenBurgerCustomizer({
-                    name: item.name,
-                    desc: item.desc,
-                    price: item.price,
-                    image: item.image,
-                    badge: item.badge,
-                    category,
-                    spicy: item.spicy,
-                    stock,
-                  })
-                }
-
-                return (
-                  <div className="menu-row" key={item.name}>
-                    <div className="menu-thumb cursor-pointer relative" onClick={triggerAction}>
-                      <img src={item.image} alt={item.name} onError={onFoodImageError} />
-                    </div>
-                    <div className="menu-description">
-                      <div className="menu-title">
-                        <h3 onClick={triggerAction} className="cursor-pointer transition-colors">
-                          {item.name}
-                        </h3>
-                        {item.spicy && <span className="menu-chip spicy"><Flame size={10} /> SPICY</span>}
-                        {item.badge && !item.badge.includes('SPICY') && (
-                          <span className="menu-chip badge">{item.badge}</span>
-                        )}
-                        <StockIndicator count={stock} lang={lang} variant="compact" />
-                      </div>
-                      <p>{item.desc}</p>
-                    </div>
-                    <strong className="menu-price">
-                      {item.price}
-                      <small> IQD</small>
-                    </strong>
-                    {isSoldOut ? (
-                      <span className="sold-out-chip">
-                        {lang === 'KU' ? 'تەواو بووە' : lang === 'AR' ? 'نفدت الكمية' : 'Sold Out'}
-                      </span>
-                    ) : (
-                      <button
-                        type="button"
-                        className="add-button cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          triggerAction()
-                        }}
-                        aria-label={`Add ${item.name}`}
-                      >
-                        <Plus size={17} />
-                      </button>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
+                <FullMenu
+          eyebrow={t.fullMenuTitle}
+          title={<>{t.fullMenuHead}<br /><span>{t.fullMenuHeadSpan}</span></>}
+        />
 
         {/* ABOUT SECTION */}
         <section id="about" className="about-section">
@@ -1525,22 +800,7 @@ export default function Page() {
       </main>
 
       {/* Floating Tray Indicator when items exist */}
-      {totalCartCount > 0 && (
-        <button
-          type="button"
-          onClick={() => setIsCartOpen(true)}
-          className="fixed z-20 bottom-24 right-5 sm:bottom-6 sm:right-24 flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#171717] text-white border-2 border-[#D95B32] shadow-2xl hover:scale-105 transition-all animate-in slide-in-from-bottom-3 duration-200 cursor-pointer"
-          aria-label={`View order tray (${totalCartCount} items)`}
-        >
-          <span className="w-5 h-5 rounded-full bg-[#D95B32] text-[#171717] font-black text-xs flex items-center justify-center">
-            {totalCartCount}
-          </span>
-          <span className="text-xs font-bold font-[family-name:var(--font-anton,Anton)] uppercase tracking-wide">
-            View Tray ({formatPrice(grandTotal)} IQD)
-          </span>
-        </button>
-      )}
-
+      
       {/* FOOTER */}
       <footer>
         <div className="container footer-grid">
@@ -1637,30 +897,11 @@ export default function Page() {
         <MessageCircle size={24} fill="currentColor" />
       </a>
 
-      {/* Burger & Food Customization Modal */}
-      <BurgerCustomizerModal
-        burger={customizingBurger}
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        onAddToCart={handleAddCustomizedOrder}
-        lang={lang}
-        stockCount={
-          customizingBurger
-            ? customizingBurger.stock ?? getInventoryStock(inventory, customizingBurger.name)
-            : undefined
-        }
-      />
-
-      {/* Cart Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        items={cartItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-        onClearCart={handleClearCart}
-        lang={lang}
-      />
+      {/* Ordering: item customizer, tray, service requests */}
+      <ItemSheet />
+      <CartSheet />
+      <CartBar />
+      <ServiceFab />
 
       {/* Customer Review Modal */}
       <ReviewModal
@@ -1670,16 +911,6 @@ export default function Page() {
         lang={lang}
       />
 
-      {/* Menu & Price Editor Modal */}
-      <MenuManagerModal
-        isOpen={isMenuManagerOpen}
-        onClose={() => setIsMenuManagerOpen(false)}
-        menuData={menuData}
-        onSaveMenu={handleSaveMenu}
-        onResetToDefault={handleResetMenuToDefault}
-        initialCategory={category}
-        lang={lang}
-      />
     </div>
   )
 }

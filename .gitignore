@@ -15,3 +15,5 @@ node_modules
 .DS_Store
 # runtime data (SQLite database + uploaded images)
 /data/
+AGENTS.md
+CLAUDE.md
