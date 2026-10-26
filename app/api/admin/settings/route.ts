@@ -41,6 +41,8 @@ const VALIDATORS: Record<keyof Settings, (v: unknown) => unknown> = {
   soundAlerts: (v) => bool(v, 'sound alerts'),
   languages: (v) => { if (!Array.isArray(v) || !v.every((x) => ['EN', 'KU', 'AR'].includes(x))) throw new ApiError(400, 'Invalid languages', 'invalid'); return v },
   whatsapp: (v) => str(v, 'WhatsApp number', { max: 20 }),
+  deliveryEnabled: (v) => bool(v, 'delivery'),
+  notice: (v) => str(v, 'notice', { max: 200 }),
 }
 
 export const PUT = route(async (req) => {

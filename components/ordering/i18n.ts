@@ -97,6 +97,8 @@ const D: Dict = {
   close: ['Close', 'إغلاق', 'داخستن'],
   invalidTable: ['That table QR code is not valid. Ask your waiter for help.', 'رمز الطاولة غير صالح. اطلب المساعدة من النادل.', 'کۆدی QR ی مێزەکە دروست نییە. داوای یارمەتی لە گارسۆن بکە.'],
   itemGone: ['An item in your tray is no longer available.', 'صنف في صينيتك لم يعد متوفراً.', 'یەکێک لە خواردنەکانت ئیتر بەردەست نییە.'],
+  orderingPaused: ['Ordering paused', 'الطلب متوقف مؤقتاً', 'داواکردن وەستێنراوە'],
+  deliveryPaused: ['Delivery is paused right now', 'التوصيل متوقف مؤقتاً', 'گەیاندن لە ئێستادا وەستێنراوە'],
   currency: ['IQD', 'د.ع', 'دینار'],
 }
 

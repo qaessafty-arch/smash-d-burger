@@ -509,14 +509,17 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
                 <Star size={15} fill="currentColor" /> <b>{avgRating}</b>{' '}
                 <small>{t.trustReviews}</small>
               </a>
-              <button
-                type="button"
-                onClick={() => setIsCartOpen(true)}
-                className="hover:opacity-80 transition-opacity flex items-center gap-1.5 text-left"
-              >
-                <Zap size={15} fill="currentColor" /> <b>30 min</b>{' '}
-                <small>{t.trustDelivery}</small>
-              </button>
+              {!(ordering.settings?.deliveryEnabled === false) && (
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity flex items-center gap-1.5 text-left"
+                >
+                  <Zap size={15} fill="currentColor" /> <b>30 min</b>{' '}
+                  <small>{t.trustDelivery}</small>
+                </a>
+              )}
               <a
                 href="#about"
                 className="hover:opacity-80 transition-opacity flex items-center gap-1.5"
@@ -785,13 +788,15 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
                 >
                   {t.getDirections} <ArrowUpRight size={16} />
                 </a>
-                <button
-                  type="button"
-                  onClick={() => setIsCartOpen(true)}
-                  className="button button-outline cursor-pointer"
-                >
-                  {lang === 'KU' ? 'داواکاری گەیاندن' : lang === 'AR' ? 'طلب توصيل' : 'Order Delivery'}
-                </button>
+                {ordering.settings?.deliveryEnabled === false ? (
+                  <span className="button button-outline" aria-disabled="true" style={{ opacity: 0.55, cursor: 'not-allowed' }}>
+                    {lang === 'KU' ? 'گەیاندن وەستێنراوە' : lang === 'AR' ? 'التوصيل متوقف مؤقتاً' : 'Delivery paused'}
+                  </span>
+                ) : (
+                  <a className="button button-outline" href={wa} target="_blank" rel="noopener noreferrer">
+                    {lang === 'KU' ? 'داواکاری گەیاندن' : lang === 'AR' ? 'طلب توصيل' : 'Order Delivery'}
+                  </a>
+                )}
               </div>
             </div>
             <div className="map-card">

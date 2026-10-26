@@ -3,6 +3,7 @@
 import { useCallback, useState } from 'react'
 import { useLive } from '@/components/staff/shell'
 import { api, iqd } from '@/components/staff/api'
+import { QuickSwitches } from '@/components/staff/quick-switches'
 
 type Stats = {
   days: number; totalOrders: number; activeOrders: number; pendingVerification: number; preparing: number; ready: number
@@ -33,6 +34,7 @@ export default function Dashboard() {
           <option value={1}>Today</option><option value={7}>7 days</option><option value={30}>30 days</option><option value={90}>90 days</option>
         </select>
       </div>
+      <QuickSwitches />
       {err && <p className="st-error">{err}</p>}
       {!s ? <p className="st-muted">Loading…</p> : (
         <>

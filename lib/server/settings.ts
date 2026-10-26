@@ -36,6 +36,8 @@ export function publicSettings() {
     requestTypes: s.requestTypes,
     languages: s.languages,
     whatsapp: s.whatsapp,
+    deliveryEnabled: s.deliveryEnabled,
+    notice: s.notice,
     isOpen: isOpenNow(s),
   }
 }

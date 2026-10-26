@@ -6,6 +6,7 @@ import { categoryIcon } from '@/components/category-icons'
 import { useOrdering } from './provider'
 import { money, pick, tr } from './i18n'
 import { FoodImage } from './parts'
+import { STATIC_SITE } from '@/lib/utils'
 import { TableBanner } from './table-gate'
 import type { MenuItem } from './types'
 
@@ -113,6 +114,8 @@ export function FullMenu({ eyebrow, title }: { eyebrow: string; title: React.Rea
           </div>
         </div>
 
+        {settings?.notice && <p className="ox-notice" role="status">{settings.notice}</p>}
+        {settings && !settings.orderingEnabled && !STATIC_SITE && <p className="ox-notice" role="status">{tr(lang, 'orderingOff')}</p>}
         <TableBanner />
 
         <div className="ox-search">
