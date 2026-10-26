@@ -64,7 +64,7 @@ export default function MenuAdmin() {
             {cat?.items.map((it) => (
               <li key={it.id} className={!it.visible ? 'dim' : ''}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image || '/smashed-burger-menu.png'} alt="" loading="lazy" onError={(e) => { e.currentTarget.src = '/smashed-burger-menu.png' }} />
+                <img src={it.image || '/menu-photo.jpg'} alt="" loading="lazy" onError={(e) => { e.currentTarget.src = '/menu-photo.jpg' }} />
                 <div className="nm"><b>{it.name.en}</b><small>{it.groups.length} option group{it.groups.length === 1 ? '' : 's'}{it.unitsSold ? ` · ${it.unitsSold} sold` : ''}{it.offerPrice !== null ? ' · offer' : ''}</small></div>
                 <label className="price"><input type="number" min={0} step={100} defaultValue={it.price} key={it.price}
                   onBlur={(e) => { const v = Number(e.target.value); if (Number.isInteger(v) && v >= 0 && v !== it.price) void run(() => api('PATCH', `/api/admin/items/${it.id}`, { price: v })) }} aria-label={`Price of ${it.name.en}`} /> <small>IQD</small></label>

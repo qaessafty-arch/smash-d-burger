@@ -1,0 +1,3405 @@
+{
+ "settings": {
+  "restaurantName": "Smashed Burger",
+  "tagline": "Erbil's boldest smash burger",
+  "description": "Erbil's boldest smash burgers. 100% fresh beef, crispy edges, melted cheese. Dine-in, takeaway & delivery in Erbil.",
+  "logoUrl": "",
+  "coverUrl": "/smashed-burger-hero.png",
+  "currency": "IQD",
+  "taxPercent": 0,
+  "servicePercent": 0,
+  "hours": [
+   {
+    "day": "sun",
+    "open": "11:00",
+    "close": "24:00",
+    "closed": false
+   },
+   {
+    "day": "mon",
+    "open": "11:00",
+    "close": "24:00",
+    "closed": false
+   },
+   {
+    "day": "tue",
+    "open": "11:00",
+    "close": "24:00",
+    "closed": false
+   },
+   {
+    "day": "wed",
+    "open": "11:00",
+    "close": "24:00",
+    "closed": false
+   },
+   {
+    "day": "thu",
+    "open": "11:00",
+    "close": "24:00",
+    "closed": false
+   },
+   {
+    "day": "fri",
+    "open": "14:00",
+    "close": "24:00",
+    "closed": false
+   },
+   {
+    "day": "sat",
+    "open": "11:00",
+    "close": "24:00",
+    "closed": false
+   }
+  ],
+  "timezone": "Asia/Baghdad",
+  "orderingEnabled": true,
+  "manualTableMode": "open",
+  "requestTypes": [
+   "waiter",
+   "water",
+   "utensils",
+   "napkins",
+   "bill"
+  ],
+  "languages": [
+   "EN",
+   "KU",
+   "AR"
+  ],
+  "whatsapp": "9647500000000",
+  "isOpen": true
+ },
+ "categories": [
+  {
+   "id": 1,
+   "name": {
+    "en": "Meat Burgers",
+    "ku": "بەرگەری گۆشت",
+    "ar": "برجر اللحم"
+   },
+   "icon": "burger",
+   "sort": 0,
+   "visible": true,
+   "items": [
+    {
+     "id": 1,
+     "categoryId": 1,
+     "name": {
+      "en": "All American",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Single smashed beef patty, American cheese, ketchup, mustard, raw onions, pickles, and house sauce.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 8500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "POPULAR",
+     "spicy": false,
+     "featured": true,
+     "popular": true,
+     "ingredients": [
+      "Single Smashed Beef Patty",
+      "American Cheese",
+      "Ketchup",
+      "Mustard",
+      "Raw Onions",
+      "Pickles",
+      "House Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 0,
+     "groups": [
+      {
+       "id": 1,
+       "name": {
+        "en": "Remove ingredients",
+        "ku": "لابردنی پێکهاتەکان",
+        "ar": "إزالة المكونات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 7,
+       "sort": 0,
+       "options": [
+        {
+         "id": 1,
+         "name": {
+          "en": "No Single Smashed Beef Patty",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 2,
+         "name": {
+          "en": "No American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 3,
+         "name": {
+          "en": "No Ketchup",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 4,
+         "name": {
+          "en": "No Mustard",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 5,
+         "name": {
+          "en": "No Raw Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 6,
+         "name": {
+          "en": "No Pickles",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 7,
+         "name": {
+          "en": "No House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        }
+       ]
+      },
+      {
+       "id": 2,
+       "name": {
+        "en": "Sauce level",
+        "ku": "ئاستی سۆس",
+        "ar": "كمية الصوص"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 8,
+         "name": {
+          "en": "Normal",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 9,
+         "name": {
+          "en": "Extra",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 10,
+         "name": {
+          "en": "Light",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 11,
+         "name": {
+          "en": "On The Side",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      },
+      {
+       "id": 3,
+       "name": {
+        "en": "Extras & upgrades",
+        "ku": "زیادکراوەکان",
+        "ar": "الإضافات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 9,
+       "sort": 2,
+       "options": [
+        {
+         "id": 12,
+         "name": {
+          "en": "Extra Patty (Smashed Beef)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 13,
+         "name": {
+          "en": "Extra American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 14,
+         "name": {
+          "en": "Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 15,
+         "name": {
+          "en": "Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 16,
+         "name": {
+          "en": "Extra House Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 17,
+         "name": {
+          "en": "Extra Spicy Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 18,
+         "name": {
+          "en": "Side Dip: House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        },
+        {
+         "id": 19,
+         "name": {
+          "en": "Side Dip: Dynamite Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 7
+        },
+        {
+         "id": 20,
+         "name": {
+          "en": "Side Dip: Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "categoryId": 1,
+     "name": {
+      "en": "OG Smash",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Single smashed beef patty with American cheese, house sauce, pickles, and caramelized onions.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 8500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "SIGNATURE",
+     "spicy": false,
+     "featured": true,
+     "popular": true,
+     "ingredients": [
+      "Single Smashed Beef Patty",
+      "American Cheese",
+      "House Sauce",
+      "Pickles",
+      "Caramelized Onions"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 1,
+     "groups": [
+      {
+       "id": 4,
+       "name": {
+        "en": "Remove ingredients",
+        "ku": "لابردنی پێکهاتەکان",
+        "ar": "إزالة المكونات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 5,
+       "sort": 0,
+       "options": [
+        {
+         "id": 21,
+         "name": {
+          "en": "No Single Smashed Beef Patty",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 22,
+         "name": {
+          "en": "No American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 23,
+         "name": {
+          "en": "No House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 24,
+         "name": {
+          "en": "No Pickles",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 25,
+         "name": {
+          "en": "No Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        }
+       ]
+      },
+      {
+       "id": 5,
+       "name": {
+        "en": "Sauce level",
+        "ku": "ئاستی سۆس",
+        "ar": "كمية الصوص"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 26,
+         "name": {
+          "en": "Normal",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 27,
+         "name": {
+          "en": "Extra",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 28,
+         "name": {
+          "en": "Light",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 29,
+         "name": {
+          "en": "On The Side",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      },
+      {
+       "id": 6,
+       "name": {
+        "en": "Extras & upgrades",
+        "ku": "زیادکراوەکان",
+        "ar": "الإضافات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 9,
+       "sort": 2,
+       "options": [
+        {
+         "id": 30,
+         "name": {
+          "en": "Extra Patty (Smashed Beef)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 31,
+         "name": {
+          "en": "Extra American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 32,
+         "name": {
+          "en": "Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 33,
+         "name": {
+          "en": "Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 34,
+         "name": {
+          "en": "Extra House Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 35,
+         "name": {
+          "en": "Extra Spicy Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 36,
+         "name": {
+          "en": "Side Dip: House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        },
+        {
+         "id": 37,
+         "name": {
+          "en": "Side Dip: Dynamite Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 7
+        },
+        {
+         "id": 38,
+         "name": {
+          "en": "Side Dip: Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "categoryId": 1,
+     "name": {
+      "en": "Jalapeño",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Single smashed beef, American cheese, house sauce, caramelized onions, and fresh jalapeños.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 8500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "SPICY",
+     "spicy": true,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Single Smashed Beef Patty",
+      "American Cheese",
+      "House Sauce",
+      "Caramelized Onions",
+      "Fresh Jalapeños"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 2,
+     "groups": [
+      {
+       "id": 7,
+       "name": {
+        "en": "Remove ingredients",
+        "ku": "لابردنی پێکهاتەکان",
+        "ar": "إزالة المكونات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 5,
+       "sort": 0,
+       "options": [
+        {
+         "id": 39,
+         "name": {
+          "en": "No Single Smashed Beef Patty",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 40,
+         "name": {
+          "en": "No American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 41,
+         "name": {
+          "en": "No House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 42,
+         "name": {
+          "en": "No Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 43,
+         "name": {
+          "en": "No Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        }
+       ]
+      },
+      {
+       "id": 8,
+       "name": {
+        "en": "Sauce level",
+        "ku": "ئاستی سۆس",
+        "ar": "كمية الصوص"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 44,
+         "name": {
+          "en": "Normal",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 45,
+         "name": {
+          "en": "Extra",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 46,
+         "name": {
+          "en": "Light",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 47,
+         "name": {
+          "en": "On The Side",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      },
+      {
+       "id": 9,
+       "name": {
+        "en": "Extras & upgrades",
+        "ku": "زیادکراوەکان",
+        "ar": "الإضافات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 9,
+       "sort": 2,
+       "options": [
+        {
+         "id": 48,
+         "name": {
+          "en": "Extra Patty (Smashed Beef)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 49,
+         "name": {
+          "en": "Extra American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 50,
+         "name": {
+          "en": "Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 51,
+         "name": {
+          "en": "Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 52,
+         "name": {
+          "en": "Extra House Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 53,
+         "name": {
+          "en": "Extra Spicy Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 54,
+         "name": {
+          "en": "Side Dip: House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        },
+        {
+         "id": 55,
+         "name": {
+          "en": "Side Dip: Dynamite Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 7
+        },
+        {
+         "id": 56,
+         "name": {
+          "en": "Side Dip: Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 8
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": {
+    "en": "Chicken Burgers",
+    "ku": "بەرگەری مریشک",
+    "ar": "برجر الدجاج"
+   },
+   "icon": "drumstick",
+   "sort": 1,
+   "visible": true,
+   "items": [
+    {
+     "id": 4,
+     "categoryId": 2,
+     "name": {
+      "en": "Golden Crunch",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crispy golden fried chicken, American cheese, crisp lettuce, fresh tomato, and house sauce.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 7500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "CRUNCHY",
+     "spicy": false,
+     "featured": true,
+     "popular": false,
+     "ingredients": [
+      "Crispy Chicken",
+      "American Cheese",
+      "Lettuce",
+      "Tomato",
+      "House Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 0,
+     "groups": [
+      {
+       "id": 10,
+       "name": {
+        "en": "Remove ingredients",
+        "ku": "لابردنی پێکهاتەکان",
+        "ar": "إزالة المكونات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 5,
+       "sort": 0,
+       "options": [
+        {
+         "id": 57,
+         "name": {
+          "en": "No Crispy Chicken",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 58,
+         "name": {
+          "en": "No American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 59,
+         "name": {
+          "en": "No Lettuce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 60,
+         "name": {
+          "en": "No Tomato",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 61,
+         "name": {
+          "en": "No House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        }
+       ]
+      },
+      {
+       "id": 11,
+       "name": {
+        "en": "Sauce level",
+        "ku": "ئاستی سۆس",
+        "ar": "كمية الصوص"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 62,
+         "name": {
+          "en": "Normal",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 63,
+         "name": {
+          "en": "Extra",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 64,
+         "name": {
+          "en": "Light",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 65,
+         "name": {
+          "en": "On The Side",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      },
+      {
+       "id": 12,
+       "name": {
+        "en": "Extras & upgrades",
+        "ku": "زیادکراوەکان",
+        "ar": "الإضافات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 9,
+       "sort": 2,
+       "options": [
+        {
+         "id": 66,
+         "name": {
+          "en": "Extra Patty (Smashed Beef)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 67,
+         "name": {
+          "en": "Extra American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 68,
+         "name": {
+          "en": "Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 69,
+         "name": {
+          "en": "Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 70,
+         "name": {
+          "en": "Extra House Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 71,
+         "name": {
+          "en": "Extra Spicy Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 72,
+         "name": {
+          "en": "Side Dip: House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        },
+        {
+         "id": 73,
+         "name": {
+          "en": "Side Dip: Dynamite Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 7
+        },
+        {
+         "id": 74,
+         "name": {
+          "en": "Side Dip: Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 5,
+     "categoryId": 2,
+     "name": {
+      "en": "Hot Chicken",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crispy fried chicken, American cheese, lettuce, tomato, and fiery house spicy sauce.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 7500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "HOT & SPICY",
+     "spicy": true,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Crispy Chicken",
+      "American Cheese",
+      "Lettuce",
+      "Tomato",
+      "Spicy Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 1,
+     "groups": [
+      {
+       "id": 13,
+       "name": {
+        "en": "Remove ingredients",
+        "ku": "لابردنی پێکهاتەکان",
+        "ar": "إزالة المكونات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 5,
+       "sort": 0,
+       "options": [
+        {
+         "id": 75,
+         "name": {
+          "en": "No Crispy Chicken",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 76,
+         "name": {
+          "en": "No American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 77,
+         "name": {
+          "en": "No Lettuce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 78,
+         "name": {
+          "en": "No Tomato",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 79,
+         "name": {
+          "en": "No Spicy Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        }
+       ]
+      },
+      {
+       "id": 14,
+       "name": {
+        "en": "Sauce level",
+        "ku": "ئاستی سۆس",
+        "ar": "كمية الصوص"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 80,
+         "name": {
+          "en": "Normal",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 81,
+         "name": {
+          "en": "Extra",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 82,
+         "name": {
+          "en": "Light",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 83,
+         "name": {
+          "en": "On The Side",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      },
+      {
+       "id": 15,
+       "name": {
+        "en": "Extras & upgrades",
+        "ku": "زیادکراوەکان",
+        "ar": "الإضافات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 9,
+       "sort": 2,
+       "options": [
+        {
+         "id": 84,
+         "name": {
+          "en": "Extra Patty (Smashed Beef)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 85,
+         "name": {
+          "en": "Extra American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 86,
+         "name": {
+          "en": "Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 87,
+         "name": {
+          "en": "Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 88,
+         "name": {
+          "en": "Extra House Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 89,
+         "name": {
+          "en": "Extra Spicy Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 90,
+         "name": {
+          "en": "Side Dip: House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        },
+        {
+         "id": 91,
+         "name": {
+          "en": "Side Dip: Dynamite Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 7
+        },
+        {
+         "id": 92,
+         "name": {
+          "en": "Side Dip: Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 6,
+     "categoryId": 2,
+     "name": {
+      "en": "Sweet Heat",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crispy chicken, American cheese, lettuce, tomato, and sweet spicy chili glaze sauce.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 7500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "SWEET & HOT",
+     "spicy": true,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Crispy Chicken",
+      "American Cheese",
+      "Lettuce",
+      "Tomato",
+      "Sweet Spicy Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 2,
+     "groups": [
+      {
+       "id": 16,
+       "name": {
+        "en": "Remove ingredients",
+        "ku": "لابردنی پێکهاتەکان",
+        "ar": "إزالة المكونات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 5,
+       "sort": 0,
+       "options": [
+        {
+         "id": 93,
+         "name": {
+          "en": "No Crispy Chicken",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 94,
+         "name": {
+          "en": "No American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 95,
+         "name": {
+          "en": "No Lettuce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 96,
+         "name": {
+          "en": "No Tomato",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 97,
+         "name": {
+          "en": "No Sweet Spicy Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        }
+       ]
+      },
+      {
+       "id": 17,
+       "name": {
+        "en": "Sauce level",
+        "ku": "ئاستی سۆس",
+        "ar": "كمية الصوص"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 98,
+         "name": {
+          "en": "Normal",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 99,
+         "name": {
+          "en": "Extra",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 100,
+         "name": {
+          "en": "Light",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 101,
+         "name": {
+          "en": "On The Side",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      },
+      {
+       "id": 18,
+       "name": {
+        "en": "Extras & upgrades",
+        "ku": "زیادکراوەکان",
+        "ar": "الإضافات"
+       },
+       "kind": "multi",
+       "required": false,
+       "min": 0,
+       "max": 9,
+       "sort": 2,
+       "options": [
+        {
+         "id": 102,
+         "name": {
+          "en": "Extra Patty (Smashed Beef)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 103,
+         "name": {
+          "en": "Extra American Cheese",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 104,
+         "name": {
+          "en": "Caramelized Onions",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 105,
+         "name": {
+          "en": "Fresh Jalapeños",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        },
+        {
+         "id": 106,
+         "name": {
+          "en": "Extra House Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 4
+        },
+        {
+         "id": 107,
+         "name": {
+          "en": "Extra Spicy Sauce (in burger)",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 5
+        },
+        {
+         "id": 108,
+         "name": {
+          "en": "Side Dip: House Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 500,
+         "isDefault": false,
+         "available": true,
+         "sort": 6
+        },
+        {
+         "id": 109,
+         "name": {
+          "en": "Side Dip: Dynamite Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 7
+        },
+        {
+         "id": 110,
+         "name": {
+          "en": "Side Dip: Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 8
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": {
+    "en": "Sides",
+    "ku": "خواردنی لاوەکی",
+    "ar": "المقبلات"
+   },
+   "icon": "shrimp",
+   "sort": 2,
+   "visible": true,
+   "items": [
+    {
+     "id": 7,
+     "categoryId": 3,
+     "name": {
+      "en": "Crispy Chicken Tenders (5 pcs)",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Five golden crispy chicken tenders, crunchy outside and juicy tender inside with house dip.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 8000,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "5 PCS",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "5 Pcs Crispy Chicken Tenders",
+      "House Dipping Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 0,
+     "groups": [
+      {
+       "id": 19,
+       "name": {
+        "en": "Portion size",
+        "ku": "قەبارەی بەشەکە",
+        "ar": "حجم الوجبة"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 111,
+         "name": {
+          "en": "Regular",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 112,
+         "name": {
+          "en": "Large",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        }
+       ]
+      },
+      {
+       "id": 20,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 113,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 114,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 115,
+         "name": {
+          "en": "Rosemary Garlic",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      },
+      {
+       "id": 21,
+       "name": {
+        "en": "Dip",
+        "ku": "سۆسی تەنیشت",
+        "ar": "الصوص الجانبي"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 2,
+       "options": [
+        {
+         "id": 116,
+         "name": {
+          "en": "House Smash Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 117,
+         "name": {
+          "en": "Spicy Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 118,
+         "name": {
+          "en": "Garlic Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 119,
+         "name": {
+          "en": "Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8,
+     "categoryId": 3,
+     "name": {
+      "en": "Dynamite Shrimps (7 pcs)",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Seven crispy shrimps tossed in a creamy fiery spicy dynamite glaze sauce.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 9500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "7 PCS",
+     "spicy": true,
+     "featured": true,
+     "popular": false,
+     "ingredients": [
+      "7 Pcs Crispy Shrimps",
+      "Spicy Dynamite Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 1,
+     "groups": [
+      {
+       "id": 22,
+       "name": {
+        "en": "Portion size",
+        "ku": "قەبارەی بەشەکە",
+        "ar": "حجم الوجبة"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 120,
+         "name": {
+          "en": "Regular",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 121,
+         "name": {
+          "en": "Large",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        }
+       ]
+      },
+      {
+       "id": 23,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 122,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 123,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 124,
+         "name": {
+          "en": "Rosemary Garlic",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      },
+      {
+       "id": 24,
+       "name": {
+        "en": "Dip",
+        "ku": "سۆسی تەنیشت",
+        "ar": "الصوص الجانبي"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 2,
+       "options": [
+        {
+         "id": 125,
+         "name": {
+          "en": "House Smash Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 126,
+         "name": {
+          "en": "Spicy Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 127,
+         "name": {
+          "en": "Garlic Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 128,
+         "name": {
+          "en": "Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 9,
+     "categoryId": 3,
+     "name": {
+      "en": "Jalapeño Poppers (7 pcs)",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Seven crispy jalapeños filled with melted molten cheese, crisp & packed with flavor.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 5500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "7 PCS",
+     "spicy": true,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "7 Pcs Jalapeño Poppers",
+      "Mixed Molten Cheese Filling"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 2,
+     "groups": [
+      {
+       "id": 25,
+       "name": {
+        "en": "Portion size",
+        "ku": "قەبارەی بەشەکە",
+        "ar": "حجم الوجبة"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 129,
+         "name": {
+          "en": "Regular",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 130,
+         "name": {
+          "en": "Large",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        }
+       ]
+      },
+      {
+       "id": 26,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 131,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 132,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 133,
+         "name": {
+          "en": "Rosemary Garlic",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      },
+      {
+       "id": 27,
+       "name": {
+        "en": "Dip",
+        "ku": "سۆسی تەنیشت",
+        "ar": "الصوص الجانبي"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 2,
+       "options": [
+        {
+         "id": 134,
+         "name": {
+          "en": "House Smash Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 135,
+         "name": {
+          "en": "Spicy Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 136,
+         "name": {
+          "en": "Garlic Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 137,
+         "name": {
+          "en": "Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10,
+     "categoryId": 3,
+     "name": {
+      "en": "Chicken Popcorn",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Bite-sized seasoned crispy chicken bites, delicious & perfect for sharing.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 5500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "SNACK",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Bite-Sized Crispy Chicken",
+      "House Dipping Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 3,
+     "groups": [
+      {
+       "id": 28,
+       "name": {
+        "en": "Portion size",
+        "ku": "قەبارەی بەشەکە",
+        "ar": "حجم الوجبة"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 138,
+         "name": {
+          "en": "Regular",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 139,
+         "name": {
+          "en": "Large",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        }
+       ]
+      },
+      {
+       "id": 29,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 140,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 141,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 142,
+         "name": {
+          "en": "Rosemary Garlic",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      },
+      {
+       "id": 30,
+       "name": {
+        "en": "Dip",
+        "ku": "سۆسی تەنیشت",
+        "ar": "الصوص الجانبي"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 2,
+       "options": [
+        {
+         "id": 143,
+         "name": {
+          "en": "House Smash Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 144,
+         "name": {
+          "en": "Spicy Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 145,
+         "name": {
+          "en": "Garlic Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 146,
+         "name": {
+          "en": "Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 11,
+     "categoryId": 3,
+     "name": {
+      "en": "Loaded Fries",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crispy golden fries topped with melted cheddar sauce, caramelized onions, jalapeños, and house sauce.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 7500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "LOADED",
+     "spicy": true,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Crispy Fries",
+      "Melted Cheese",
+      "Caramelized Onions",
+      "Jalapeños",
+      "House Sauce"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 4,
+     "groups": [
+      {
+       "id": 31,
+       "name": {
+        "en": "Portion size",
+        "ku": "قەبارەی بەشەکە",
+        "ar": "حجم الوجبة"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 147,
+         "name": {
+          "en": "Regular",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 148,
+         "name": {
+          "en": "Large",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1500,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        }
+       ]
+      },
+      {
+       "id": 32,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 1,
+       "options": [
+        {
+         "id": 149,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 150,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 151,
+         "name": {
+          "en": "Rosemary Garlic",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      },
+      {
+       "id": 33,
+       "name": {
+        "en": "Dip",
+        "ku": "سۆسی تەنیشت",
+        "ar": "الصوص الجانبي"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 2,
+       "options": [
+        {
+         "id": 152,
+         "name": {
+          "en": "House Smash Sauce",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 153,
+         "name": {
+          "en": "Spicy Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 154,
+         "name": {
+          "en": "Garlic Mayo",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        },
+        {
+         "id": 155,
+         "name": {
+          "en": "Melted Cheddar",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 1000,
+         "isDefault": false,
+         "available": true,
+         "sort": 3
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": {
+    "en": "Fries",
+    "ku": "پەتاتە",
+    "ar": "البطاطس"
+   },
+   "icon": "fries",
+   "sort": 3,
+   "visible": true,
+   "items": [
+    {
+     "id": 12,
+     "categoryId": 4,
+     "name": {
+      "en": "Classic Fries",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crispy golden French fries seasoned with sea salt and fried to order.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 3000,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "CRISPY",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Crispy French Fries",
+      "Sea Salt"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 0,
+     "groups": [
+      {
+       "id": 34,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 156,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 157,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 158,
+         "name": {
+          "en": "Garlic & Herb",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 13,
+     "categoryId": 4,
+     "name": {
+      "en": "Curly Fries",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Spiraled golden crispy seasoned curly fries with signature spices.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 3500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "POPULAR",
+     "spicy": false,
+     "featured": false,
+     "popular": true,
+     "ingredients": [
+      "Golden Curly Fries",
+      "House Spice Seasoning"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 1,
+     "groups": [
+      {
+       "id": 35,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 159,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 160,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 161,
+         "name": {
+          "en": "Garlic & Herb",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 14,
+     "categoryId": 4,
+     "name": {
+      "en": "Seasoned Fries",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crispy golden fries tossed in our fragrant cajun and herb spice blend.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 3500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "CAJUN SPICE",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [
+      "Crispy French Fries",
+      "Cajun Herb Spice Blend"
+     ],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 2,
+     "groups": [
+      {
+       "id": 36,
+       "name": {
+        "en": "Seasoning",
+        "ku": "بەهارات",
+        "ar": "التوابل"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 162,
+         "name": {
+          "en": "Classic Sea Salt",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 163,
+         "name": {
+          "en": "Smoky Cajun",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 164,
+         "name": {
+          "en": "Garlic & Herb",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "name": {
+    "en": "Drinks",
+    "ku": "خواردنەوە",
+    "ar": "المشروبات"
+   },
+   "icon": "drink",
+   "sort": 4,
+   "visible": true,
+   "items": [
+    {
+     "id": 15,
+     "categoryId": 5,
+     "name": {
+      "en": "Pepsi",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Ice-cold 330ml chilled Pepsi can.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 1500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "CHILLED",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 0,
+     "groups": [
+      {
+       "id": 37,
+       "name": {
+        "en": "Ice",
+        "ku": "",
+        "ar": "الثلج"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 165,
+         "name": {
+          "en": "Normal Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 166,
+         "name": {
+          "en": "Extra Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 167,
+         "name": {
+          "en": "No Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16,
+     "categoryId": 5,
+     "name": {
+      "en": "7UP",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Crisp, refreshing 330ml lemon-lime soda can.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 1500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "REFRESHING",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 1,
+     "groups": [
+      {
+       "id": 38,
+       "name": {
+        "en": "Ice",
+        "ku": "",
+        "ar": "الثلج"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 168,
+         "name": {
+          "en": "Normal Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 169,
+         "name": {
+          "en": "Extra Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 170,
+         "name": {
+          "en": "No Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 17,
+     "categoryId": 5,
+     "name": {
+      "en": "Mirinda",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Vibrant chilled 330ml citrus orange soda can.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 1500,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "ORANGE",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 2,
+     "groups": [
+      {
+       "id": 39,
+       "name": {
+        "en": "Ice",
+        "ku": "",
+        "ar": "الثلج"
+       },
+       "kind": "single",
+       "required": true,
+       "min": 1,
+       "max": 1,
+       "sort": 0,
+       "options": [
+        {
+         "id": 171,
+         "name": {
+          "en": "Normal Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": true,
+         "available": true,
+         "sort": 0
+        },
+        {
+         "id": 172,
+         "name": {
+          "en": "Extra Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 1
+        },
+        {
+         "id": 173,
+         "name": {
+          "en": "No Ice",
+          "ku": "",
+          "ar": ""
+         },
+         "priceDelta": 0,
+         "isDefault": false,
+         "available": true,
+         "sort": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 18,
+     "categoryId": 5,
+     "name": {
+      "en": "Mineral Water",
+      "ku": "",
+      "ar": ""
+     },
+     "desc": {
+      "en": "Pure mountain natural spring water bottle served chilled or room temp.",
+      "ku": "",
+      "ar": ""
+     },
+     "price": 1000,
+     "offerPrice": null,
+     "offerLabel": "",
+     "image": "/menu-photo.jpg",
+     "prepMinutes": null,
+     "badge": "PURE",
+     "spicy": false,
+     "featured": false,
+     "popular": false,
+     "ingredients": [],
+     "allergens": [],
+     "available": true,
+     "visible": true,
+     "sort": 3,
+     "groups": []
+    }
+   ]
+  }
+ ]
+}

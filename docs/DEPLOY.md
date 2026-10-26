@@ -27,3 +27,15 @@ docker build -t smash-d-burger .
 docker run -p 3000:3000 -v smash-data:/data -e ADMIN_PASSWORD='choose-a-strong-one' -e INSECURE_COOKIES=1 smash-d-burger
 ```
 (`INSECURE_COOKIES=1` only for plain-HTTP testing on your own computer.)
+
+## Public website on GitHub Pages
+
+The workflow `.github/workflows/pages.yml` publishes the landing page plus a **read-only menu** (no ordering) to
+`https://<your-user>.github.io/smash-d-burger/` every time `main` changes. The menu there is a snapshot in
+`public/static-menu.json`. After you edit the menu in Admin, refresh the snapshot:
+
+```bash
+BASE=https://your-ordering-address pnpm static-menu    # then commit public/static-menu.json
+```
+
+Real ordering (table QR, waiter, kitchen, admin) always runs on the server version above.

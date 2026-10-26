@@ -17,3 +17,5 @@ node_modules
 /data/
 AGENTS.md
 CLAUDE.md
+.static-build/
+/out/

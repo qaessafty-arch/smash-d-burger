@@ -8,7 +8,7 @@ import { FeaturedSection, FullMenu, CartBar } from '@/components/ordering/menu-s
 import { ItemSheet } from '@/components/ordering/item-sheet'
 import { CartSheet } from '@/components/ordering/cart-sheet'
 import { ServiceFab } from '@/components/ordering/service-fab'
-import { BASE_PATH } from '@/lib/utils'
+import { BASE_PATH, STATIC_SITE } from '@/lib/utils'
 import {
   ArrowUpRight,
   Check,
@@ -56,10 +56,7 @@ const LocationMap = dynamic(
 
 const defaultWa =
   'https://wa.me/9647500000000?text=Hi%20Smashed%20Burger%2C%20I%27d%20like%20to%20order.'
-const heroBackgrounds = [
-  'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smashed%20burger%20infront-Lq3QmBR7UEDrDRqgNW2WneUum382sA.jpg',
-  'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smashed%20burger1-uwhgxZoQxNwLcddFXz9vn4cUx8qBH7.jpg',
-]
+const heroBackgrounds = [`${BASE_PATH}/menu-photo.jpg`]
 
 const copy = {
   EN: {
@@ -397,6 +394,16 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
                 </span>
               )}
             </button>
+
+            {/* Returning guests: jump back to their live order */}
+            {ordering.orders.length > 0 && (
+              <a
+                href={`/order/${ordering.orders[0].token}`}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider transition-colors border border-white/15"
+              >
+                {lang === 'AR' ? 'طلبي' : lang === 'KU' ? 'داواکارییەکەم' : 'My order'}
+              </a>
+            )}
 
             {/* Order Now CTA */}
             <button
@@ -881,7 +888,7 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
           </div>
 
           <div className="copyright text-neutral-400">
-            © 2024–2026 Smashed Burger Erbil · All rights reserved.
+            © 2024–2026 Smashed Burger Erbil · All rights reserved.{!STATIC_SITE && <> · <a href="/staff/login" className="underline hover:text-white">Staff</a></>}
           </div>
         </div>
       </footer>
