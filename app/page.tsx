@@ -8,7 +8,7 @@ import { FeaturedSection, FullMenu, CartBar } from '@/components/ordering/menu-s
 import { ItemSheet } from '@/components/ordering/item-sheet'
 import { CartSheet } from '@/components/ordering/cart-sheet'
 import { ServiceFab } from '@/components/ordering/service-fab'
-import { BASE_PATH } from '@/lib/utils'
+import { BASE_PATH, STATIC_SITE } from '@/lib/utils'
 import {
   ArrowUpRight,
   Check,
@@ -56,7 +56,7 @@ const LocationMap = dynamic(
 
 const defaultWa =
   'https://wa.me/9647500000000?text=Hi%20Smashed%20Burger%2C%20I%27d%20like%20to%20order.'
-const heroBackgrounds = ['/menu-photo.jpg']
+const heroBackgrounds = [`${BASE_PATH}/menu-photo.jpg`]
 
 const copy = {
   EN: {
@@ -888,7 +888,7 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
           </div>
 
           <div className="copyright text-neutral-400">
-            © 2024–2026 Smashed Burger Erbil · All rights reserved. · <a href="/staff/login" className="underline hover:text-white">Staff</a>
+            © 2024–2026 Smashed Burger Erbil · All rights reserved.{!STATIC_SITE && <> · <a href="/staff/login" className="underline hover:text-white">Staff</a></>}
           </div>
         </div>
       </footer>

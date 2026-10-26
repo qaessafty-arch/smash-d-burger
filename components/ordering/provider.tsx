@@ -4,6 +4,20 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useRouter } from 'next/navigation'
 import type { Category, CartLine, MenuItem, PublicSettings, Quote, TableInfo } from './types'
 import type { Lang } from './i18n'
+import { BASE_PATH, STATIC_SITE } from '@/lib/utils'
+
+/** Static (GitHub Pages) build: client-side open/closed check from the saved opening hours. */
+function openNow(hours: PublicSettings['hours'], tz: string) {
+  try {
+    const p = new Intl.DateTimeFormat('en-GB', { timeZone: tz, weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date())
+    const wd = p.find((x) => x.type === 'weekday')!.value.toLowerCase().slice(0, 3)
+    const cur = (Number(p.find((x) => x.type === 'hour')!.value) % 24) * 60 + Number(p.find((x) => x.type === 'minute')!.value)
+    const d = hours.find((h) => h.day === wd)
+    if (!d || d.closed) return false
+    const m = (t: string) => { const [a, b] = t.split(':').map(Number); return a * 60 + (b || 0) }
+    return m(d.close) > m(d.open) ? cur >= m(d.open) && cur < m(d.close) : cur >= m(d.open) || cur < m(d.close)
+  } catch { return false }
+}
 
 type Session = { table: TableInfo | null; manualTableMode: string; tables: Array<{ publicId: string; number: string; location: string }> }
 
@@ -84,9 +98,15 @@ export function OrderingProvider({ lang, children }: { lang: Lang; children: Rea
 
   const loadMenu = useCallback(async () => {
     try {
-      const r = await fetch('/api/menu', { cache: 'no-store' })
+      const r = await fetch(STATIC_SITE ? `${BASE_PATH}/static-menu.json` : '/api/menu', { cache: 'no-store' })
       if (!r.ok) throw new Error()
       const d = await r.json()
+      if (STATIC_SITE) {
+        // Menu preview only: ordering needs the restaurant's server.
+        const pre = (u: string) => (u.startsWith('/') ? BASE_PATH + u : u)
+        d.settings = { ...d.settings, orderingEnabled: false, manualTableMode: 'off', isOpen: openNow(d.settings.hours, d.settings.timezone) }
+        d.categories = d.categories.map((c: Category) => ({ ...c, items: c.items.map((i) => ({ ...i, image: pre(i.image) })) }))
+      }
       setSettings(d.settings)
       setCategories(d.categories)
       setLoadError(false)
@@ -98,6 +118,7 @@ export function OrderingProvider({ lang, children }: { lang: Lang; children: Rea
   }, [])
 
   const refreshSession = useCallback(async () => {
+    if (STATIC_SITE) { setSession({ table: null, manualTableMode: 'off', tables: [] }); return }
     try {
       const r = await fetch('/api/session', { cache: 'no-store' })
       if (r.ok) setSession(await r.json())

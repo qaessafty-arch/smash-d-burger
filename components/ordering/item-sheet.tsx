@@ -116,7 +116,7 @@ export function ItemSheet() {
             <button type="button" onClick={() => setQty((q) => Math.min(50, q + 1))} aria-label="+"><Plus size={16} /></button>
           </div>
           <button type="button" className="ox-primary" disabled={!item.available || missing.length > 0 || !settings?.orderingEnabled} onClick={submit}>
-            {!item.available ? tr(lang, 'unavailable') : editing ? tr(lang, 'update') : tr(lang, 'addToOrder')}
+            {!item.available ? tr(lang, 'unavailable') : !settings?.orderingEnabled ? tr(lang, 'needTable') : editing ? tr(lang, 'update') : tr(lang, 'addToOrder')}
             <span>{money(unit * qty, lang)}</span>
           </button>
         </div>
