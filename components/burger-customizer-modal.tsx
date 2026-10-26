@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { X, Plus, Minus, Check, Flame, Sparkles } from 'lucide-react'
 import { StockIndicator } from './stock-indicator'
+import { onFoodImageError } from '@/lib/utils'
 
 export interface BurgerItem {
   name: string
@@ -320,6 +321,7 @@ export function BurgerCustomizerModal({
             src={burger.image}
             alt={burger.name}
             className="w-full h-full object-cover object-center opacity-85"
+            onError={onFoodImageError}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/60 to-transparent" />
 

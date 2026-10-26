@@ -11,6 +11,7 @@ import { CartDrawer } from '@/components/cart-drawer'
 import { ReviewModal, ReviewItem } from '@/components/review-modal'
 import { MenuManagerModal } from '@/components/menu-manager-modal'
 import { StockIndicator } from '@/components/stock-indicator'
+import { BASE_PATH, onFoodImageError } from '@/lib/utils'
 import {
   INITIAL_SIMULATED_INVENTORY,
   getInventoryStock,
@@ -38,6 +39,11 @@ import {
   ArrowUp,
   Share2,
   RotateCcw,
+  Beef,
+  Drumstick,
+  Fish,
+  Popcorn,
+  CupSoda,
 } from 'lucide-react'
 
 const LocationMap = dynamic(
@@ -99,7 +105,7 @@ const featured: BurgerItem[] = [
     desc: 'Seven crispy shrimps tossed in a creamy spicy dynamite sauce.',
     price: '9,500',
     image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
-    badge: 'Hot 🌶️',
+    badge: 'Hot',
     spicy: true,
     category: 'Sides',
   },
@@ -132,7 +138,7 @@ const fullMenuData: Record<
       name: 'Jalapeño',
       desc: 'Single smashed beef, American cheese, house sauce, caramelized onions, and fresh jalapeños.',
       price: '8,500',
-      badge: 'SPICY 🌶️',
+      badge: 'SPICY',
       spicy: true,
       image: 'https://images.unsplash.com/photo-1582196016295-f8c8bd4b3e99?w=800&auto=format&fit=crop&q=80',
       category: 'Meat Burgers',
@@ -151,7 +157,7 @@ const fullMenuData: Record<
       name: 'Hot Chicken',
       desc: 'Crispy fried chicken, American cheese, lettuce, tomato, and fiery house spicy sauce.',
       price: '7,500',
-      badge: 'HOT & SPICY 🌶️',
+      badge: 'HOT & SPICY',
       spicy: true,
       image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&auto=format&fit=crop&q=80',
       category: 'Chicken Burgers',
@@ -160,7 +166,7 @@ const fullMenuData: Record<
       name: 'Sweet Heat',
       desc: 'Crispy chicken, American cheese, lettuce, tomato, and sweet spicy chili glaze sauce.',
       price: '7,500',
-      badge: 'SWEET & HOT 🌶️',
+      badge: 'SWEET & HOT',
       spicy: true,
       image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&auto=format&fit=crop&q=80',
       category: 'Chicken Burgers',
@@ -179,7 +185,7 @@ const fullMenuData: Record<
       name: 'Dynamite Shrimps (7 pcs)',
       desc: 'Seven crispy shrimps tossed in a creamy fiery spicy dynamite glaze sauce.',
       price: '9,500',
-      badge: '7 PCS · 🌶️',
+      badge: '7 PCS',
       spicy: true,
       image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
       category: 'Sides',
@@ -188,7 +194,7 @@ const fullMenuData: Record<
       name: 'Jalapeño Poppers (7 pcs)',
       desc: 'Seven crispy jalapeños filled with melted molten cheese, crisp & packed with flavor.',
       price: '5,500',
-      badge: '7 PCS · 🌶️',
+      badge: '7 PCS',
       spicy: true,
       image: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=800&auto=format&fit=crop&q=80',
       category: 'Sides',
@@ -205,7 +211,7 @@ const fullMenuData: Record<
       name: 'Loaded Fries',
       desc: 'Crispy golden fries topped with melted cheddar sauce, caramelized onions, jalapeños, and house sauce.',
       price: '7,500',
-      badge: 'LOADED 🌶️',
+      badge: 'LOADED',
       spicy: true,
       image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?w=800&auto=format&fit=crop&q=80',
       category: 'Sides',
@@ -1079,7 +1085,7 @@ export default function Page() {
                       onClick={() => handleOpenBurgerCustomizer(item)}
                       title={`Click to customize ${item.name}`}
                     >
-                      <img src={item.image} alt={`${item.name} smash burger`} />
+                      <img src={item.image} alt={`${item.name} smash burger`} onError={onFoodImageError} />
                       <div className="absolute top-3 left-3 flex flex-col gap-1 items-start z-10">
                         {item.badge && (
                           <span className="font-bold text-[9px] uppercase tracking-[0.5px] px-2 py-1 rounded-[4px] bg-[#D9AA55] text-[#171717]">
@@ -1202,11 +1208,11 @@ export default function Page() {
 
             <div className="menu-tabs" role="tablist">
               {[
-                { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', icon: '🥩' },
-                { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', icon: '🍗' },
-                { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', icon: '🍤' },
-                { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', icon: '🍟' },
-                { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', icon: '🥤' },
+                { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', Icon: Beef },
+                { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', Icon: Drumstick },
+                { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', Icon: Fish },
+                { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', Icon: Popcorn },
+                { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', Icon: CupSoda },
               ].map((cat) => {
                 const isSelected = category === cat.id
                 return (
@@ -1218,7 +1224,7 @@ export default function Page() {
                     className={`menu-tab ${isSelected ? 'selected' : ''}`}
                     onClick={() => setCategory(cat.id)}
                   >
-                    <span>{cat.icon}</span>
+                    <cat.Icon size={15} />
                     <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
                     <span className="tab-count">{menuData[cat.id]?.length || 0}</span>
                   </button>
@@ -1230,7 +1236,7 @@ export default function Page() {
             {category === 'Meat Burgers' && (
               <div className="menu-promo">
                 <div className="menu-promo-main">
-                  <span className="menu-promo-icon">🥩</span>
+                  <span className="menu-promo-icon"><Beef size={20} /></span>
                   <div>
                     <h3>
                       {lang === 'KU'
@@ -1281,14 +1287,14 @@ export default function Page() {
                 return (
                   <div className="menu-row" key={item.name}>
                     <div className="menu-thumb cursor-pointer relative" onClick={triggerAction}>
-                      <img src={item.image} alt={item.name} />
+                      <img src={item.image} alt={item.name} onError={onFoodImageError} />
                     </div>
                     <div className="menu-description">
                       <div className="menu-title">
                         <h3 onClick={triggerAction} className="cursor-pointer transition-colors">
                           {item.name}
                         </h3>
-                        {item.spicy && <span className="menu-chip spicy">🌶️ SPICY</span>}
+                        {item.spicy && <span className="menu-chip spicy"><Flame size={10} /> SPICY</span>}
                         {item.badge && !item.badge.includes('SPICY') && (
                           <span className="menu-chip badge">{item.badge}</span>
                         )}
@@ -1328,7 +1334,7 @@ export default function Page() {
         <section id="about" className="about-section">
           <div className="container about-grid">
             <div className="about-photo">
-              <img src="/smashed-burger-hero.png" alt={t.aboutAlt} />
+              <img src={`${BASE_PATH}/smashed-burger-hero.png`} alt={t.aboutAlt} />
               <div className="photo-label">
                 {t.estYear}
                 <br />
@@ -1371,7 +1377,7 @@ export default function Page() {
               <div className="rating">
                 <strong>{avgRating}</strong>
                 <div>
-                  <span>★★★★★</span>
+                  <span className="stars-row">{[0, 1, 2, 3, 4].map((i) => <Star key={i} size={14} fill="currentColor" />)}</span>
                   <small>Google rating · {totalReviewsCount}+ reviews</small>
                 </div>
               </div>
@@ -1408,7 +1414,7 @@ export default function Page() {
                   : 'bg-white/5 text-neutral-400 hover:text-white border border-white/10'
               }`}
             >
-              ★ 5 Stars ({reviewsList.filter((r) => r.stars === 5).length})
+              <Star size={12} fill="currentColor" className="inline -mt-0.5" /> 5 Stars ({reviewsList.filter((r) => r.stars === 5).length})
             </button>
           </div>
 
@@ -1418,8 +1424,9 @@ export default function Page() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="stars text-[#D9AA55]">
-                      {'★'.repeat(review.stars)}
-                      {'☆'.repeat(5 - review.stars)}
+                      {[0, 1, 2, 3, 4].map((i) => (
+                        <Star key={i} size={13} fill={i < review.stars ? 'currentColor' : 'none'} />
+                      ))}
                     </div>
                     {review.date && (
                       <span className="text-[11px] text-neutral-500">{review.date}</span>

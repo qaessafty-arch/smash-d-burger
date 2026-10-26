@@ -14,6 +14,12 @@ import {
   DollarSign,
   Tag,
   Package,
+  Beef,
+  Drumstick,
+  Fish,
+  Popcorn,
+  CupSoda,
+  Utensils,
 } from 'lucide-react'
 import { BurgerItem } from './burger-customizer-modal'
 import { StockIndicator } from './stock-indicator'
@@ -204,12 +210,12 @@ export function MenuManagerModal({
     }
   }
 
-  const categories: Array<{ id: MenuCategory; en: string; ar: string; ku: string; icon: string }> = [
-    { id: 'Meat Burgers', en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', icon: '🥩' },
-    { id: 'Chicken Burgers', en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', icon: '🍗' },
-    { id: 'Sides', en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', icon: '🍤' },
-    { id: 'Fries', en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', icon: '🍟' },
-    { id: 'Drinks', en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', icon: '🥤' },
+  const categories: Array<{ id: MenuCategory; en: string; ar: string; ku: string; Icon: typeof Beef }> = [
+    { id: 'Meat Burgers', en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', Icon: Beef },
+    { id: 'Chicken Burgers', en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', Icon: Drumstick },
+    { id: 'Sides', en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', Icon: Fish },
+    { id: 'Fries', en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', Icon: Popcorn },
+    { id: 'Drinks', en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', Icon: CupSoda },
   ]
 
   return (
@@ -224,7 +230,7 @@ export function MenuManagerModal({
         <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between bg-[#191919]">
           <div className="flex items-center gap-3">
             <span className="w-9 h-9 rounded-xl bg-[#D95B32] text-[#171717] flex items-center justify-center font-bold text-lg">
-              🍔
+              <Utensils size={18} />
             </span>
             <div>
               <h2 className="text-base sm:text-lg font-bold text-white uppercase font-[family-name:var(--font-anton,Anton)] tracking-wider">
@@ -286,7 +292,7 @@ export function MenuManagerModal({
                     : 'bg-[#101010] text-neutral-400 hover:text-white border border-white/10 hover:border-white/25'
                 }`}
               >
-                <span>{cat.icon}</span>
+                <span><cat.Icon size={14} /></span>
                 <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-[4px] font-bold ${
@@ -420,7 +426,7 @@ export function MenuManagerModal({
                   />
                   <span className="font-semibold text-neutral-300 flex items-center gap-1 text-xs">
                     <Flame size={14} className="text-[#D95B32]" />
-                    <span>{lang === 'KU' ? 'تیژ (Spicy)' : lang === 'AR' ? 'حار (Spicy 🌶️)' : 'Spicy Item 🌶️'}</span>
+                    <span>{lang === 'KU' ? 'تیژ (Spicy)' : lang === 'AR' ? 'حار (Spicy)' : 'Spicy Item'}</span>
                   </span>
                 </label>
               </div>
@@ -534,7 +540,7 @@ export function MenuManagerModal({
                             </h4>
                             {item.spicy && (
                               <span className="text-[8px] text-[#D95B32] bg-[#ffe5dc] border border-[#D95B32]/30 px-1.5 py-0.5 rounded-[4px] font-bold uppercase tracking-[0.5px]">
-                                🌶️ SPICY
+                                <Flame size={9} className="inline -mt-0.5" /> SPICY
                               </span>
                             )}
                             {item.badge && !item.badge.includes('SPICY') && (

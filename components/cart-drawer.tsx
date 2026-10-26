@@ -13,8 +13,11 @@ import {
   Copy,
   MapPin,
   ShoppingBag,
+  Truck,
+  Store,
 } from 'lucide-react'
 import { CustomizedBurgerOrder } from './burger-customizer-modal'
+import { onFoodImageError } from '@/lib/utils'
 
 interface CartDrawerProps {
   isOpen: boolean
@@ -187,7 +190,7 @@ export function CartDrawer({
                     : 'border-white/10 text-neutral-400 hover:text-white'
                 }`}
               >
-                <span>🛵 {lang === 'KU' ? 'گەیاندن (+٢,٠٠٠)' : lang === 'AR' ? 'توصيل (+2,000)' : 'Erbil Delivery (+2,000)'}</span>
+                <span><Truck size={14} className="inline -mt-0.5 mr-1" />{lang === 'KU' ? 'گەیاندن (+٢,٠٠٠)' : lang === 'AR' ? 'توصيل (+2,000)' : 'Erbil Delivery (+2,000)'}</span>
               </button>
               <button
                 type="button"
@@ -198,7 +201,7 @@ export function CartDrawer({
                     : 'border-white/10 text-neutral-400 hover:text-white'
                 }`}
               >
-                <span>🛍️ {lang === 'KU' ? 'وەرگرتن لە شوێن' : lang === 'AR' ? 'استلام من المطعم' : 'Pickup (Gulan St)'}</span>
+                <span><Store size={14} className="inline -mt-0.5 mr-1" />{lang === 'KU' ? 'وەرگرتن لە شوێن' : lang === 'AR' ? 'استلام من المطعم' : 'Pickup (Gulan St)'}</span>
               </button>
             </div>
 
@@ -266,6 +269,7 @@ export function CartDrawer({
                       src={item.image}
                       alt={item.burgerName}
                       className="w-12 h-12 rounded-lg object-cover bg-neutral-800 flex-shrink-0"
+                      onError={onFoodImageError}
                     />
                     <div>
                       <h4 className="font-bold text-sm text-white leading-snug">
