@@ -14,13 +14,9 @@ import {
   DollarSign,
   Tag,
   Package,
-  Beef,
-  Drumstick,
-  Fish,
-  Popcorn,
-  CupSoda,
   Utensils,
 } from 'lucide-react'
+import { CATEGORY_ICONS } from './category-icons'
 import { BurgerItem } from './burger-customizer-modal'
 import { StockIndicator } from './stock-indicator'
 
@@ -210,12 +206,12 @@ export function MenuManagerModal({
     }
   }
 
-  const categories: Array<{ id: MenuCategory; en: string; ar: string; ku: string; Icon: typeof Beef }> = [
-    { id: 'Meat Burgers', en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', Icon: Beef },
-    { id: 'Chicken Burgers', en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', Icon: Drumstick },
-    { id: 'Sides', en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', Icon: Fish },
-    { id: 'Fries', en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', Icon: Popcorn },
-    { id: 'Drinks', en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', Icon: CupSoda },
+  const categories: Array<{ id: MenuCategory; en: string; ar: string; ku: string }> = [
+    { id: 'Meat Burgers', en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', },
+    { id: 'Chicken Burgers', en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', },
+    { id: 'Sides', en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', },
+    { id: 'Fries', en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', },
+    { id: 'Drinks', en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', },
   ]
 
   return (
@@ -292,7 +288,7 @@ export function MenuManagerModal({
                     : 'bg-[#101010] text-neutral-400 hover:text-white border border-white/10 hover:border-white/25'
                 }`}
               >
-                <span><cat.Icon size={14} /></span>
+                <span>{(() => { const Icon = CATEGORY_ICONS[cat.id]; return <Icon size={14} /> })()}</span>
                 <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-[4px] font-bold ${

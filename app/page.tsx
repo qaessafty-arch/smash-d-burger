@@ -11,6 +11,7 @@ import { CartDrawer } from '@/components/cart-drawer'
 import { ReviewModal, ReviewItem } from '@/components/review-modal'
 import { MenuManagerModal } from '@/components/menu-manager-modal'
 import { StockIndicator } from '@/components/stock-indicator'
+import { CATEGORY_ICONS } from '@/components/category-icons'
 import { BASE_PATH, onFoodImageError } from '@/lib/utils'
 import {
   INITIAL_SIMULATED_INVENTORY,
@@ -40,10 +41,6 @@ import {
   Share2,
   RotateCcw,
   Beef,
-  Drumstick,
-  Fish,
-  Popcorn,
-  CupSoda,
 } from 'lucide-react'
 
 const LocationMap = dynamic(
@@ -1208,11 +1205,11 @@ export default function Page() {
 
             <div className="menu-tabs" role="tablist">
               {[
-                { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', Icon: Beef },
-                { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', Icon: Drumstick },
-                { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', Icon: Fish },
-                { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', Icon: Popcorn },
-                { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', Icon: CupSoda },
+                { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', },
+                { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', },
+                { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', },
+                { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', },
+                { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', },
               ].map((cat) => {
                 const isSelected = category === cat.id
                 return (
@@ -1224,7 +1221,7 @@ export default function Page() {
                     className={`menu-tab ${isSelected ? 'selected' : ''}`}
                     onClick={() => setCategory(cat.id)}
                   >
-                    <cat.Icon size={15} />
+                    {(() => { const Icon = CATEGORY_ICONS[cat.id]; return <Icon size={15} /> })()}
                     <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
                     <span className="tab-count">{menuData[cat.id]?.length || 0}</span>
                   </button>
