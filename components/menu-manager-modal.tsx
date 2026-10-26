@@ -501,7 +501,7 @@ export function MenuManagerModal({
                 >
                   <Plus size={14} />
                   <span>
-                    {lang === 'KU' ? '+ زیادکردنی خواردن' : lang === 'AR' ? '+ إضافة صنف جديد' : '+ Add Item'}
+                    {lang === 'KU' ? 'زیادکردنی خواردن' : lang === 'AR' ? 'إضافة صنف جديد' : 'Add Item'}
                   </span>
                 </button>
               </div>
@@ -537,7 +537,7 @@ export function MenuManagerModal({
                                 🌶️ SPICY
                               </span>
                             )}
-                            {item.badge && (
+                            {item.badge && !item.badge.includes('SPICY') && (
                               <span className="text-[8px] text-[#171717] bg-[#D9AA55] px-1.5 py-0.5 rounded-[4px] font-bold uppercase tracking-[0.5px]">
                                 {item.badge}
                               </span>

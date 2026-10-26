@@ -1147,236 +1147,180 @@ export default function Page() {
         </section>
 
         {/* FULL LINEUP MENU */}
-        <section id="full-menu" className="section container menu-section">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow dark">{t.fullMenuTitle}</p>
-              <h2>
-                {t.fullMenuHead}
-                <br />
-                <span>{t.fullMenuHeadSpan}</span>
-              </h2>
+        <section id="full-menu" className="menu-section full-menu">
+          <div className="container section">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow dark">{t.fullMenuTitle}</p>
+                <h2>
+                  {t.fullMenuHead}
+                  <br />
+                  <span>{t.fullMenuHeadSpan}</span>
+                </h2>
+              </div>
+              <div className="cart-note">
+                <span>{totalCartCount > 0 ? '' : 'Order for pickup or delivery'}</span>
+                <button type="button" onClick={() => setIsCartOpen(true)} className="tray-link">
+                  {totalCartCount > 0
+                    ? `${totalCartCount} item${totalCartCount > 1 ? 's' : ''} · ${formatPrice(grandTotal)} IQD · Review & WhatsApp Order`
+                    : 'View Tray'}
+                  <ArrowUpRight size={15} />
+                </button>
+              </div>
             </div>
-            <div className="cart-note flex flex-col sm:flex-row items-end sm:items-center gap-2 flex-wrap">
+
+            <div className="menu-tools">
               <button
                 type="button"
                 onClick={() => setIsMenuManagerOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-[#171717] hover:bg-[#252525] border border-white/20 text-[11px] font-bold uppercase tracking-[0.5px] text-[#D9AA55] hover:text-white transition-all hover:-translate-y-0.5 cursor-pointer"
+                className="tool-btn"
                 title="Edit menu items, prices, and descriptions"
               >
-                <Edit2 size={12} className="text-[#D95B32]" />
-                <span>
-                  {lang === 'KU'
-                    ? 'گۆڕینی مینیۆ / نرخەکان'
-                    : lang === 'AR'
-                    ? 'تعديل المنيو والأسعار'
-                    : 'Edit Menu'}
-                </span>
+                <Edit2 size={12} />
+                {lang === 'KU' ? 'گۆڕینی مینیۆ / نرخەکان' : lang === 'AR' ? 'تعديل المنيو والأسعار' : 'Edit Menu'}
               </button>
-
-              {/* Live Inventory Simulation Controls */}
+              <span className="tools-spacer" />
               <button
                 type="button"
                 onClick={handleSimulateLiveOrder}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-[#171717] hover:bg-[#252525] border border-white/20 text-[11px] font-bold uppercase tracking-[0.5px] text-neutral-300 hover:text-[#D95B32] transition-all hover:-translate-y-0.5 cursor-pointer"
+                className="tool-btn"
                 title="Simulate an Erbil diner placing a live order to test inventory updates"
               >
-                <Zap size={12} className="text-[#D95B32]" />
-                <span>
-                  {lang === 'KU'
-                    ? 'تاقیکردنەوەی داواکاری'
-                    : lang === 'AR'
-                    ? 'محاكاة طلب'
-                    : 'Simulate Order'}
-                </span>
+                <Zap size={12} />
+                {lang === 'KU' ? 'تاقیکردنەوەی داواکاری' : lang === 'AR' ? 'محاكاة طلب' : 'Simulate Order'}
               </button>
-
               <button
                 type="button"
                 onClick={handleRestockAll}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-[4px] bg-[#171717] hover:bg-[#252525] border border-white/20 text-[11px] font-bold uppercase tracking-[0.5px] text-neutral-400 hover:text-white transition-all hover:-translate-y-0.5 cursor-pointer"
+                className="tool-btn"
                 title="Reset simulated stock to full capacity"
               >
-                <RotateCcw size={11} />
-                <span className="hidden sm:inline">
-                  {lang === 'KU' ? 'پڕکردنەوە' : lang === 'AR' ? 'تجديد المخزون' : 'Restock'}
-                </span>
-              </button>
-
-              {totalCartCount > 0 ? (
-                <button
-                  type="button"
-                  onClick={() => setIsCartOpen(true)}
-                  className="text-right text-xs font-bold text-[#D95B32] hover:underline flex items-center gap-1"
-                >
-                  <ShoppingBag size={14} />
-                  <span>
-                    {totalCartCount} item{totalCartCount > 1 ? 's' : ''} in tray (
-                    {formatPrice(grandTotal)} IQD)
-                  </span>
-                </button>
-              ) : (
-                <span className="text-xs text-neutral-400 hidden sm:inline">Order for pickup or delivery</span>
-              )}
-              <button
-                type="button"
-                onClick={() => setIsCartOpen(true)}
-                className="inline-flex items-center gap-1 text-xs font-bold text-white uppercase hover:text-[#D95B32]"
-              >
-                {totalCartCount > 0 ? 'Review & WhatsApp Order' : 'View Tray'}{' '}
-                <ArrowUpRight size={15} />
+                <RotateCcw size={12} />
+                {lang === 'KU' ? 'پڕکردنەوە' : lang === 'AR' ? 'تجديد المخزون' : 'Restock'}
               </button>
             </div>
-          </div>
 
-          <div className="tabs flex flex-wrap gap-2.5 mb-6" role="tablist">
-            {[
-              { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', icon: '🥩' },
-              { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', icon: '🍗' },
-              { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', icon: '🍤' },
-              { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', icon: '🍟' },
-              { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', icon: '🥤' },
-            ].map((cat) => {
-              const count = menuData[cat.id]?.length || 0
-              const isSelected = category === cat.id
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                    isSelected
-                      ? 'selected bg-gradient-to-r from-[#D95B32] to-[#c24a24] text-white shadow-lg shadow-[#D95B32]/35 border border-[#D95B32]'
-                      : 'bg-[#1a1a1a] text-neutral-300 border border-white/10 hover:border-[#D95B32]/40 hover:bg-[#242424] hover:text-white'
-                  }`}
-                  onClick={() => setCategory(cat.id)}
-                >
-                  <span className="text-sm">{cat.icon}</span>
-                  <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
-                  <span
-                    className={`tab-count text-[10px] font-mono px-2 py-0.5 rounded-full ${
-                      isSelected
-                        ? 'bg-black/30 text-white font-bold'
-                        : 'bg-white/10 text-neutral-400'
-                    }`}
+            <div className="menu-tabs" role="tablist">
+              {[
+                { id: 'Meat Burgers' as const, en: 'Meat Burgers', ar: 'برجر اللحم', ku: 'بەرگەری گۆشت', icon: '🥩' },
+                { id: 'Chicken Burgers' as const, en: 'Chicken Burgers', ar: 'برجر الدجاج', ku: 'بەرگەری مریشک', icon: '🍗' },
+                { id: 'Sides' as const, en: 'Sides', ar: 'المقبلات', ku: 'خواردنی لاوەکی', icon: '🍤' },
+                { id: 'Fries' as const, en: 'Fries', ar: 'البطاطس', ku: 'پەتاتە', icon: '🍟' },
+                { id: 'Drinks' as const, en: 'Drinks', ar: 'المشروبات', ku: 'خواردنەوە', icon: '🥤' },
+              ].map((cat) => {
+                const isSelected = category === cat.id
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    className={`menu-tab ${isSelected ? 'selected' : ''}`}
+                    onClick={() => setCategory(cat.id)}
                   >
-                    {count}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Extra Patty Banner for Meat Burgers */}
-          {category === 'Meat Burgers' && (
-            <div className="mb-5 p-3.5 sm:p-4 rounded-[8px] bg-[#1a1a1a] border border-[#D95B32]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-[4px] bg-[#D95B32] text-[#171717] flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm">
-                  🥩
-                </span>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm font-bold text-white uppercase tracking-wider font-[family-name:var(--font-anton,Anton)]">
-                      {lang === 'KU'
-                        ? '+ گۆشتی سمەشی زیادە: ١,٥٠٠ دینار'
-                        : lang === 'AR'
-                        ? '+ شريحة لحم سماش إضافية: 1,500 د.ع'
-                        : '+ Extra Smashed Patty: 1,500 IQD'}
-                    </p>
-                    <span className="text-[10px] bg-[#D9AA55] text-[#171717] font-bold px-2 py-0.5 rounded-[4px]">
-                      +1,500 IQD
-                    </span>
-                  </div>
-                  <p className="text-xs text-neutral-400 mt-0.5">
-                    {lang === 'KU'
-                      ? 'دەتوانیت شلەی گۆشتی سمەشی زیادە بۆ هەر بەرگەرێک زیاد بکەیت لە کاتی داواکاریدا'
-                      : lang === 'AR'
-                      ? 'يمكنك مضاعفة لحم السماش لأي برجر بكل سهولة عند تخصيص طلبك بالضغط على الزر'
-                      : 'Add an extra juicy smashed beef patty to any burger when clicking Customize!'}
-                  </p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleOpenBurgerCustomizer(menuData['Meat Burgers']?.[0] || fullMenuData['Meat Burgers'][0])}
-                className="self-start sm:self-auto px-3.5 py-1.5 rounded-[4px] bg-[#D95B32] hover:bg-[#e36a43] text-[#171717] text-xs font-bold uppercase tracking-[0.5px] transition-all hover:-translate-y-0.5 flex items-center gap-1.5 cursor-pointer"
-              >
-                <Sliders size={12} />
-                <span>{lang === 'KU' ? 'ڕێکخستن' : lang === 'AR' ? 'تخصيص' : 'Customize Now'}</span>
-              </button>
+                    <span>{cat.icon}</span>
+                    <span>{lang === 'KU' ? cat.ku : lang === 'AR' ? cat.ar : cat.en}</span>
+                    <span className="tab-count">{menuData[cat.id]?.length || 0}</span>
+                  </button>
+                )
+              })}
             </div>
-          )}
 
-          <div className="menu-list">
-            {(menuData[category] || []).map((item) => {
-              const stock = item.stock ?? getInventoryStock(inventory, item.name)
-              const isSoldOut = stock <= 0
-
-              const triggerAction = () => {
-                handleOpenBurgerCustomizer({
-                  name: item.name,
-                  desc: item.desc,
-                  price: item.price,
-                  image: item.image,
-                  badge: item.badge,
-                  category,
-                  spicy: item.spicy,
-                  stock,
-                })
-              }
-
-              return (
-                <div className="menu-row" key={item.name}>
-                  <div className="menu-thumb cursor-pointer relative" onClick={triggerAction}>
-                    <img src={item.image} alt={item.name} />
+            {/* Extra Patty Banner for Meat Burgers */}
+            {category === 'Meat Burgers' && (
+              <div className="menu-promo">
+                <div className="menu-promo-main">
+                  <span className="menu-promo-icon">🥩</span>
+                  <div>
+                    <h3>
+                      {lang === 'KU'
+                        ? 'گۆشتی سمەشی زیادە'
+                        : lang === 'AR'
+                        ? 'شريحة لحم سماش إضافية'
+                        : 'Extra Smashed Patty'}
+                      <span>+1,500 IQD</span>
+                    </h3>
+                    <p>
+                      {lang === 'KU'
+                        ? 'دەتوانیت شلەی گۆشتی سمەشی زیادە بۆ هەر بەرگەرێک زیاد بکەیت لە کاتی داواکاریدا'
+                        : lang === 'AR'
+                        ? 'يمكنك مضاعفة لحم السماش لأي برجر بكل سهولة عند تخصيص طلبك بالضغط على الزر'
+                        : 'Add an extra juicy smashed beef patty to any burger when clicking Customize!'}
+                    </p>
                   </div>
-                  <div className="menu-description">
-                    <div className="menu-title">
-                      <h3
-                        onClick={triggerAction}
-                        className="cursor-pointer hover:text-[#D95B32] transition-colors flex items-center gap-2 flex-wrap"
-                      >
-                        <span>{item.name}</span>
-                        {item.spicy && (
-                          <span className="text-[8px] px-1.5 py-0.5 rounded-[4px] bg-[#ffe5dc] border border-[#D95B32]/30 text-[#D95B32] font-bold uppercase tracking-[0.5px]">
-                            🌶️ SPICY
-                          </span>
-                        )}
-                      </h3>
-                      <div className="flex items-center gap-1.5 flex-wrap">
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleOpenBurgerCustomizer(menuData['Meat Burgers']?.[0] || fullMenuData['Meat Burgers'][0])}
+                  className="button button-orange"
+                >
+                  <Sliders size={13} />
+                  {lang === 'KU' ? 'ڕێکخستن' : lang === 'AR' ? 'تخصيص' : 'Customize Now'}
+                </button>
+              </div>
+            )}
+
+            <div className="menu-list">
+              {(menuData[category] || []).map((item) => {
+                const stock = item.stock ?? getInventoryStock(inventory, item.name)
+                const isSoldOut = stock <= 0
+
+                const triggerAction = () => {
+                  handleOpenBurgerCustomizer({
+                    name: item.name,
+                    desc: item.desc,
+                    price: item.price,
+                    image: item.image,
+                    badge: item.badge,
+                    category,
+                    spicy: item.spicy,
+                    stock,
+                  })
+                }
+
+                return (
+                  <div className="menu-row" key={item.name}>
+                    <div className="menu-thumb cursor-pointer relative" onClick={triggerAction}>
+                      <img src={item.image} alt={item.name} />
+                    </div>
+                    <div className="menu-description">
+                      <div className="menu-title">
+                        <h3 onClick={triggerAction} className="cursor-pointer transition-colors">
+                          {item.name}
+                        </h3>
+                        {item.spicy && <span className="menu-chip spicy">🌶️ SPICY</span>}
                         {item.badge && !item.badge.includes('SPICY') && (
-                          <span>{item.badge}</span>
+                          <span className="menu-chip badge">{item.badge}</span>
                         )}
                         <StockIndicator count={stock} lang={lang} variant="compact" />
                       </div>
+                      <p>{item.desc}</p>
                     </div>
-                    <p>{item.desc}</p>
+                    <strong className="menu-price">
+                      {item.price}
+                      <small> IQD</small>
+                    </strong>
+                    {isSoldOut ? (
+                      <span className="sold-out-chip">
+                        {lang === 'KU' ? 'تەواو بووە' : lang === 'AR' ? 'نفدت الكمية' : 'Sold Out'}
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        className="add-button cursor-pointer"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          triggerAction()
+                        }}
+                        aria-label={`Add ${item.name}`}
+                      >
+                        <Plus size={17} />
+                      </button>
+                    )}
                   </div>
-                  <strong className="menu-price">
-                    {item.price}
-                    <small> IQD</small>
-                  </strong>
-                  {isSoldOut ? (
-                    <span className="px-2.5 py-1 rounded-[4px] bg-[#171717] text-[#aaa] border border-white/20 text-[9px] font-bold uppercase tracking-[0.5px]">
-                      {lang === 'KU' ? 'تەواو بووە' : lang === 'AR' ? 'نفدت الكمية' : 'Sold Out'}
-                    </span>
-                  ) : (
-                    <button
-                      type="button"
-                      className="add-button outline cursor-pointer"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        triggerAction()
-                      }}
-                      aria-label={`Add ${item.name}`}
-                    >
-                      <Plus size={17} />
-                    </button>
-                  )}
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
         </section>
 
