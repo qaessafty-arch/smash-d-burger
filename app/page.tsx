@@ -398,6 +398,16 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
               )}
             </button>
 
+            {/* Returning guests: jump back to their live order */}
+            {ordering.orders.length > 0 && (
+              <a
+                href={`/order/${ordering.orders[0].token}`}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider transition-colors border border-white/15"
+              >
+                {lang === 'AR' ? 'طلبي' : lang === 'KU' ? 'داواکارییەکەم' : 'My order'}
+              </a>
+            )}
+
             {/* Order Now CTA */}
             <button
               type="button"
@@ -881,7 +891,7 @@ function PageInner({ lang, setLang }: { lang: 'EN' | 'KU' | 'AR'; setLang: (l: '
           </div>
 
           <div className="copyright text-neutral-400">
-            © 2024–2026 Smashed Burger Erbil · All rights reserved.
+            © 2024–2026 Smashed Burger Erbil · All rights reserved. · <a href="/staff/login" className="underline hover:text-white">Staff</a>
           </div>
         </div>
       </footer>
