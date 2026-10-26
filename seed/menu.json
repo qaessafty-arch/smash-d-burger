@@ -1,0 +1,173 @@
+{
+  "categories": [
+    {
+      "name": "Meat Burgers",
+      "items": [
+        {
+          "name": "All American",
+          "desc": "Single smashed beef patty, American cheese, ketchup, mustard, raw onions, pickles, and house sauce.",
+          "price": 8500,
+          "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&auto=format&fit=crop&q=80",
+          "badge": "POPULAR",
+          "spicy": false
+        },
+        {
+          "name": "OG Smash",
+          "desc": "Single smashed beef patty with American cheese, house sauce, pickles, and caramelized onions.",
+          "price": 8500,
+          "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80",
+          "badge": "SIGNATURE",
+          "spicy": false
+        },
+        {
+          "name": "Jalapeño",
+          "desc": "Single smashed beef, American cheese, house sauce, caramelized onions, and fresh jalapeños.",
+          "price": 8500,
+          "image": "https://images.unsplash.com/photo-1582196016295-f8c8bd4b3e99?w=800&auto=format&fit=crop&q=80",
+          "badge": "SPICY",
+          "spicy": true
+        }
+      ]
+    },
+    {
+      "name": "Chicken Burgers",
+      "items": [
+        {
+          "name": "Golden Crunch",
+          "desc": "Crispy golden fried chicken, American cheese, crisp lettuce, fresh tomato, and house sauce.",
+          "price": 7500,
+          "image": "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=800&auto=format&fit=crop&q=80",
+          "badge": "CRUNCHY",
+          "spicy": false
+        },
+        {
+          "name": "Hot Chicken",
+          "desc": "Crispy fried chicken, American cheese, lettuce, tomato, and fiery house spicy sauce.",
+          "price": 7500,
+          "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&auto=format&fit=crop&q=80",
+          "badge": "HOT & SPICY",
+          "spicy": true
+        },
+        {
+          "name": "Sweet Heat",
+          "desc": "Crispy chicken, American cheese, lettuce, tomato, and sweet spicy chili glaze sauce.",
+          "price": 7500,
+          "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&auto=format&fit=crop&q=80",
+          "badge": "SWEET & HOT",
+          "spicy": true
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Crispy Chicken Tenders (5 pcs)",
+          "desc": "Five golden crispy chicken tenders, crunchy outside and juicy tender inside with house dip.",
+          "price": 8000,
+          "image": "https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80",
+          "badge": "5 PCS",
+          "spicy": false
+        },
+        {
+          "name": "Dynamite Shrimps (7 pcs)",
+          "desc": "Seven crispy shrimps tossed in a creamy fiery spicy dynamite glaze sauce.",
+          "price": 9500,
+          "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80",
+          "badge": "7 PCS",
+          "spicy": true
+        },
+        {
+          "name": "Jalapeño Poppers (7 pcs)",
+          "desc": "Seven crispy jalapeños filled with melted molten cheese, crisp & packed with flavor.",
+          "price": 5500,
+          "image": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=800&auto=format&fit=crop&q=80",
+          "badge": "7 PCS",
+          "spicy": true
+        },
+        {
+          "name": "Chicken Popcorn",
+          "desc": "Bite-sized seasoned crispy chicken bites, delicious & perfect for sharing.",
+          "price": 5500,
+          "image": "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=800&auto=format&fit=crop&q=80",
+          "badge": "SNACK",
+          "spicy": false
+        },
+        {
+          "name": "Loaded Fries",
+          "desc": "Crispy golden fries topped with melted cheddar sauce, caramelized onions, jalapeños, and house sauce.",
+          "price": 7500,
+          "image": "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=800&auto=format&fit=crop&q=80",
+          "badge": "LOADED",
+          "spicy": true
+        }
+      ]
+    },
+    {
+      "name": "Fries",
+      "items": [
+        {
+          "name": "Classic Fries",
+          "desc": "Crispy golden French fries seasoned with sea salt and fried to order.",
+          "price": 3000,
+          "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&auto=format&fit=crop&q=80",
+          "badge": "CRISPY",
+          "spicy": false
+        },
+        {
+          "name": "Curly Fries",
+          "desc": "Spiraled golden crispy seasoned curly fries with signature spices.",
+          "price": 3500,
+          "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=800&auto=format&fit=crop&q=80",
+          "badge": "POPULAR",
+          "spicy": false
+        },
+        {
+          "name": "Seasoned Fries",
+          "desc": "Crispy golden fries tossed in our fragrant cajun and herb spice blend.",
+          "price": 3500,
+          "image": "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=800&auto=format&fit=crop&q=80",
+          "badge": "CAJUN SPICE",
+          "spicy": false
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Pepsi",
+          "desc": "Ice-cold 330ml chilled Pepsi can.",
+          "price": 1500,
+          "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=800&auto=format&fit=crop&q=80",
+          "badge": "CHILLED",
+          "spicy": false
+        },
+        {
+          "name": "7UP",
+          "desc": "Crisp, refreshing 330ml lemon-lime soda can.",
+          "price": 1500,
+          "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=800&auto=format&fit=crop&q=80",
+          "badge": "REFRESHING",
+          "spicy": false
+        },
+        {
+          "name": "Mirinda",
+          "desc": "Vibrant chilled 330ml citrus orange soda can.",
+          "price": 1500,
+          "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=800&auto=format&fit=crop&q=80",
+          "badge": "ORANGE",
+          "spicy": false
+        },
+        {
+          "name": "Mineral Water",
+          "desc": "Pure mountain natural spring water bottle served chilled or room temp.",
+          "price": 1000,
+          "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=800&auto=format&fit=crop&q=80",
+          "badge": "PURE",
+          "spicy": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.3.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
+      - name: Build
+        run: pnpm build
+        env:
+          DATABASE_PATH: ${{ runner.temp }}/build.db
+      - name: API tests (against the production build)
+        env:
+          DATABASE_PATH: ${{ runner.temp }}/ci.db
+          ADMIN_USERNAME: admin
+          ADMIN_PASSWORD: Admin#12345
+          UPLOAD_DIR: ${{ runner.temp }}/uploads
+          INSECURE_COOKIES: "1"
+          BASE: http://localhost:3100
+        run: |
+          pnpm start -p 3100 &
+          npx --yes wait-on http-get://localhost:3100/api/menu --timeout 60000
+          pnpm test
